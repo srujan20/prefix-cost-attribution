@@ -1,0 +1,69 @@
+# Attribution policy for prefixcost.
+#
+# Every value here is a decision about how serving is configured or how cost is
+# divided, not a fact about the workload. The comment on each says who normally
+# makes that choice and what the experiments measured about it.
+
+vocabulary:
+  # Target token count for the vocabulary trained from the corpus. Large enough
+  # that ordinary prose tokenises at a realistic ratio and small enough that
+  # training runs in a second on every invocation, which is what lets the
+  # vocabulary be reproduced rather than committed. exp01 reports the ratio it
+  # actually achieves.
+  target_size: 1200
+
+workload:
+  # Tenants sharing one deployment. This is the denominator of every attribution.
+  tenants: 24
+  # Distinct system prompts. Fewer prompts than tenants is the whole point: it is
+  # what makes prefixes shared across tenants rather than only within one, and it
+  # is the arrangement every multi tenant product built on a base template has.
+  prompt_families: 6
+  # Conversations per tenant, and turns per conversation. A conversation is where
+  # within tenant prefix sharing comes from, because every turn resends the whole
+  # history.
+  conversations_per_tenant: 8
+  turns_per_conversation: 5
+  # Output tokens per response, drawn around this mean. Decode is priced
+  # separately from prefill below and is never shared, which is why it is the
+  # part of the bill nobody argues about.
+  mean_output_tokens: 90
+
+cache:
+  # Prefix cache capacity, in tokens. This is the single most consequential
+  # number in the file: at zero the attribution question disappears because
+  # nothing is shared, and above the working set it stops changing. exp03 sweeps
+  # it and reports where the interesting range is.
+  capacity_tokens: 60000
+  # Eviction policy. lru is what production prefix caches ship with, and exp03
+  # measures what the choice is worth against an oracle that never evicts
+  # anything that will be needed again.
+  policy: lru
+
+pricing:
+  # Currency units per token, chosen so the arithmetic is legible rather than to
+  # match any provider. Prefill and decode are priced separately because they are
+  # different work: prefill is a parallel pass over the prompt and decode is
+  # sequential, so a request that is all prompt and a request that is all output
+  # do not cost the same even at equal token counts.
+  prefill_per_token: 1.0
+  decode_per_token: 4.0
+
+attribution:
+  # The scheme the tool reports as shipped. `marginal` is what a cache aware
+  # biller arrives at by accident: charge each request for the tokens actually
+  # processed. It sums to the true total exactly and it is a function of arrival
+  # order, which exp02 measures.
+  default_scheme: marginal
+  # A tenant's share is called materially different when it moves by more than
+  # this fraction of its own value between two orderings of the same workload.
+  # The first value here was 0.01, written from intuition, and exp02 measured the
+  # spread across orderings at many times that, so the tool was calling every
+  # workload unstable and saying nothing. This value sits above the measured
+  # spread of the schemes that are order independent by construction, which is
+  # exactly zero, and below the spread of the ones that are not.
+  material_share_shift: 0.05
+  # Replications for the rates measured over repeated orderings. Every rate is
+  # published with a Wilson interval, so this is the denominator a reader can
+  # check a claimed zero against.
+  replications: 200
