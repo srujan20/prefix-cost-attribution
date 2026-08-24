@@ -31,10 +31,16 @@ workload:
 
 cache:
   # Prefix cache capacity, in tokens. This is the single most consequential
-  # number in the file: at zero the attribution question disappears because
-  # nothing is shared, and above the working set it stops changing. exp03 sweeps
-  # it and reports where the interesting range is.
-  capacity_tokens: 60000
+  # number in the file and the default was changed once, on evidence.
+  #
+  # It was 60000, which is above this workload's 24613 distinct prefix tokens, so
+  # the cache never evicted. That is a comfortable configuration and it hides the
+  # finding: with no eviction the fair scheme sums to the bill exactly and the
+  # three properties stop conflicting. 8000 is about a third of the working set,
+  # which is what a deployment whose prompts grew past its cache actually looks
+  # like, and it is the regime where the conflict is live. exp03 sweeps the whole
+  # range and reports what each capacity buys.
+  capacity_tokens: 8000
   # Eviction policy. lru is what production prefix caches ship with, and exp03
   # measures what the choice is worth against an oracle that never evicts
   # anything that will be needed again.
