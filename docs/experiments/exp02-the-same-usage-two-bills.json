@@ -1,0 +1,273 @@
+{
+  "collects": {
+    "equal_split": {
+      "max": 0.9970707410648181,
+      "mean": 0.9963171691255627,
+      "median": 0.9963625912803382,
+      "min": 0.9955289682776101,
+      "p95": 0.9969511776629786
+    },
+    "marginal": {
+      "max": 1.0,
+      "mean": 1.0,
+      "median": 1.0,
+      "min": 1.0,
+      "p95": 1.0
+    },
+    "per_request": {
+      "max": 1.8451898387529724,
+      "mean": 1.8382537042510931,
+      "median": 1.8378106319888943,
+      "min": 1.8325756300162765,
+      "p95": 1.8443167225619839
+    },
+    "proportional": {
+      "max": 0.9970707410648177,
+      "mean": 0.9963171691255627,
+      "median": 0.9963625912803381,
+      "min": 0.9955289682776101,
+      "p95": 0.9969511776629785
+    },
+    "shapley": {
+      "max": 0.997070741064818,
+      "mean": 0.9963171691255628,
+      "median": 0.996362591280338,
+      "min": 0.9955289682776103,
+      "p95": 0.9969511776629785
+    }
+  },
+  "exactly_zero_spread": {
+    "equal_split": {
+      "floor": 0.008333333333333333,
+      "high": 1.0,
+      "low": 0.9689808335812966,
+      "measured_zero": false,
+      "successes": 120,
+      "trials": 120,
+      "value": 1.0
+    },
+    "marginal": {
+      "floor": 0.008333333333333333,
+      "high": 0.031019166418703486,
+      "low": 0.0,
+      "measured_zero": true,
+      "successes": 0,
+      "trials": 120,
+      "value": 0.0
+    },
+    "per_request": {
+      "floor": 0.008333333333333333,
+      "high": 1.0,
+      "low": 0.9689808335812966,
+      "measured_zero": false,
+      "successes": 120,
+      "trials": 120,
+      "value": 1.0
+    },
+    "proportional": {
+      "floor": 0.008333333333333333,
+      "high": 1.0,
+      "low": 0.9689808335812966,
+      "measured_zero": false,
+      "successes": 120,
+      "trials": 120,
+      "value": 1.0
+    },
+    "shapley": {
+      "floor": 0.008333333333333333,
+      "high": 1.0,
+      "low": 0.9689808335812966,
+      "measured_zero": false,
+      "successes": 120,
+      "trials": 120,
+      "value": 1.0
+    }
+  },
+  "headline_spread": 0.49754241319169173,
+  "materiality": 0.05,
+  "moved_past_materiality": {
+    "equal_split": {
+      "floor": 0.008333333333333333,
+      "high": 0.031019166418703486,
+      "low": 0.0,
+      "measured_zero": true,
+      "successes": 0,
+      "trials": 120,
+      "value": 0.0
+    },
+    "marginal": {
+      "floor": 0.008333333333333333,
+      "high": 1.0,
+      "low": 0.9689808335812966,
+      "measured_zero": false,
+      "successes": 120,
+      "trials": 120,
+      "value": 1.0
+    },
+    "per_request": {
+      "floor": 0.008333333333333333,
+      "high": 0.031019166418703486,
+      "low": 0.0,
+      "measured_zero": true,
+      "successes": 0,
+      "trials": 120,
+      "value": 0.0
+    },
+    "proportional": {
+      "floor": 0.008333333333333333,
+      "high": 0.031019166418703486,
+      "low": 0.0,
+      "measured_zero": true,
+      "successes": 0,
+      "trials": 120,
+      "value": 0.0
+    },
+    "shapley": {
+      "floor": 0.008333333333333333,
+      "high": 0.031019166418703486,
+      "low": 0.0,
+      "measured_zero": true,
+      "successes": 0,
+      "trials": 120,
+      "value": 0.0
+    }
+  },
+  "order_independent_by_construction": [
+    "per_request",
+    "equal_split",
+    "proportional",
+    "shapley"
+  ],
+  "orderings": 12,
+  "seeds": 5,
+  "spread": {
+    "equal_split": {
+      "max": 0.0,
+      "mean": 0.0,
+      "median": 0.0,
+      "min": 0.0,
+      "p95": 0.0
+    },
+    "marginal": {
+      "max": 0.49754241319169173,
+      "mean": 0.35060258654625426,
+      "median": 0.34942138903900266,
+      "min": 0.0685551059271602,
+      "p95": 0.4347184365979796
+    },
+    "per_request": {
+      "max": 0.0,
+      "mean": 0.0,
+      "median": 0.0,
+      "min": 0.0,
+      "p95": 0.0
+    },
+    "proportional": {
+      "max": 0.0,
+      "mean": 0.0,
+      "median": 0.0,
+      "min": 0.0,
+      "p95": 0.0
+    },
+    "shapley": {
+      "max": 0.0,
+      "mean": 0.0,
+      "median": 0.0,
+      "min": 0.0,
+      "p95": 0.0
+    }
+  },
+  "sums_to_the_bill": {
+    "equal_split": {
+      "floor": 0.016666666666666666,
+      "high": 0.06017185214208986,
+      "low": 0.0,
+      "measured_zero": true,
+      "successes": 0,
+      "trials": 60,
+      "value": 0.0
+    },
+    "marginal": {
+      "floor": 0.016666666666666666,
+      "high": 0.9999999999999998,
+      "low": 0.93982814785791,
+      "measured_zero": false,
+      "successes": 60,
+      "trials": 60,
+      "value": 1.0
+    },
+    "per_request": {
+      "floor": 0.016666666666666666,
+      "high": 0.06017185214208986,
+      "low": 0.0,
+      "measured_zero": true,
+      "successes": 0,
+      "trials": 60,
+      "value": 0.0
+    },
+    "proportional": {
+      "floor": 0.016666666666666666,
+      "high": 0.06017185214208986,
+      "low": 0.0,
+      "measured_zero": true,
+      "successes": 0,
+      "trials": 60,
+      "value": 0.0
+    },
+    "shapley": {
+      "floor": 0.016666666666666666,
+      "high": 0.06017185214208986,
+      "low": 0.0,
+      "measured_zero": true,
+      "successes": 0,
+      "trials": 60,
+      "value": 0.0
+    }
+  },
+  "tenant_observations": 120,
+  "widest_single_tenant": {
+    "high": 1336.0,
+    "low": 813.0,
+    "scheme": "marginal",
+    "seed": 12,
+    "spread": 0.49754241319169173,
+    "tenant": 16
+  },
+  "worst_tenant_spread": {
+    "equal_split": {
+      "max": 0.0,
+      "mean": 0.0,
+      "median": 0.0,
+      "min": 0.0,
+      "p95": 0.0
+    },
+    "marginal": {
+      "max": 0.49754241319169173,
+      "mean": 0.4546231201506636,
+      "median": 0.45164410058027077,
+      "min": 0.4264896373056995,
+      "p95": 0.4905436090586555
+    },
+    "per_request": {
+      "max": 0.0,
+      "mean": 0.0,
+      "median": 0.0,
+      "min": 0.0,
+      "p95": 0.0
+    },
+    "proportional": {
+      "max": 0.0,
+      "mean": 0.0,
+      "median": 0.0,
+      "min": 0.0,
+      "p95": 0.0
+    },
+    "shapley": {
+      "max": 0.0,
+      "mean": 0.0,
+      "median": 0.0,
+      "min": 0.0,
+      "p95": 0.0
+    }
+  }
+}

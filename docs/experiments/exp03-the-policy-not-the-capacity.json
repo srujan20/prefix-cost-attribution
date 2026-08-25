@@ -1,0 +1,519 @@
+{
+  "at_shipped_capacity": {
+    "capacity_tokens": 8000,
+    "lru": {
+      "collects": {
+        "equal_split": 0.9967889537856971,
+        "marginal": 1.0,
+        "per_request": 1.837865044545528,
+        "proportional": 0.9967889537856969,
+        "shapley": 0.996788953785697
+      },
+      "evictions": 17806,
+      "hit_share": 0.9234465941654949,
+      "is_a_bill": {
+        "equal_split": false,
+        "marginal": true,
+        "per_request": false,
+        "proportional": false,
+        "shapley": false
+      },
+      "prefill_tokens": 25806
+    },
+    "oracle": {
+      "collects": {
+        "equal_split": 1.0000000000000002,
+        "marginal": 1.0,
+        "per_request": 1.8437855250758093,
+        "proportional": 0.9999999999999999,
+        "shapley": 1.0
+      },
+      "evictions": 16613,
+      "hit_share": 0.9269856243584952,
+      "is_a_bill": {
+        "equal_split": true,
+        "marginal": true,
+        "per_request": false,
+        "proportional": true,
+        "shapley": true
+      },
+      "prefill_tokens": 24613
+    },
+    "policy_excess_share": 0.04847032056230447,
+    "policy_excess_tokens": 1193
+  },
+  "distinct_prefix_tokens": 24613,
+  "evictions_at_that_capacity": 4613,
+  "first_capacity_where_shapley_is_a_bill": 20000,
+  "first_zero_eviction_capacity": 24613,
+  "lru_excess_share_at_shipped": {
+    "max": 0.06653992395437269,
+    "mean": 0.056075936407031124,
+    "median": 0.05321756470441619,
+    "min": 0.04847032056230449,
+    "p95": 0.06520768802937704
+  },
+  "oracle_at_shipped": [
+    {
+      "distinct_prefix_tokens": 24613,
+      "lru_excess_share": 0.04847032056230449,
+      "lru_prefill": 25806,
+      "oracle_is_optimal": true,
+      "oracle_prefill": 24613,
+      "seed": 11
+    },
+    {
+      "distinct_prefix_tokens": 24196,
+      "lru_excess_share": 0.06653992395437269,
+      "lru_prefill": 25806,
+      "oracle_is_optimal": true,
+      "oracle_prefill": 24196,
+      "seed": 12
+    },
+    {
+      "distinct_prefix_tokens": 24071,
+      "lru_excess_share": 0.05321756470441619,
+      "lru_prefill": 25352,
+      "oracle_is_optimal": true,
+      "oracle_prefill": 24071,
+      "seed": 13
+    }
+  ],
+  "oracle_reaches_the_unbounded_optimum": true,
+  "rows": [
+    {
+      "capacity_tokens": 0,
+      "lru": {
+        "collects": {
+          "equal_split": 0.5423624312046186,
+          "marginal": 1.0,
+          "per_request": 1.0,
+          "proportional": 0.5423624312046184,
+          "shapley": 0.5423624312046185
+        },
+        "evictions": 0,
+        "hit_share": 0.0,
+        "is_a_bill": {
+          "equal_split": false,
+          "marginal": true,
+          "per_request": true,
+          "proportional": false,
+          "shapley": false
+        },
+        "prefill_tokens": 337098
+      },
+      "oracle": {
+        "collects": {
+          "equal_split": 0.5423624312046186,
+          "marginal": 1.0,
+          "per_request": 1.0,
+          "proportional": 0.5423624312046184,
+          "shapley": 0.5423624312046185
+        },
+        "evictions": 0,
+        "hit_share": 0.0,
+        "is_a_bill": {
+          "equal_split": false,
+          "marginal": true,
+          "per_request": true,
+          "proportional": false,
+          "shapley": false
+        },
+        "prefill_tokens": 337098
+      },
+      "policy_excess_share": 0.0,
+      "policy_excess_tokens": 0
+    },
+    {
+      "capacity_tokens": 1000,
+      "lru": {
+        "collects": {
+          "equal_split": 0.9802435673807112,
+          "marginal": 1.0,
+          "per_request": 1.8073589005852286,
+          "proportional": 0.9802435673807108,
+          "shapley": 0.9802435673807111
+        },
+        "evictions": 31077,
+        "hit_share": 0.9048436953052228,
+        "is_a_bill": {
+          "equal_split": false,
+          "marginal": true,
+          "per_request": false,
+          "proportional": false,
+          "shapley": false
+        },
+        "prefill_tokens": 32077
+      },
+      "oracle": {
+        "collects": {
+          "equal_split": 0.9859063815286813,
+          "marginal": 1.0,
+          "per_request": 1.8177999153424504,
+          "proportional": 0.9859063815286809,
+          "shapley": 0.985906381528681
+        },
+        "evictions": 28907,
+        "hit_share": 0.9112809924710321,
+        "is_a_bill": {
+          "equal_split": false,
+          "marginal": true,
+          "per_request": false,
+          "proportional": false,
+          "shapley": false
+        },
+        "prefill_tokens": 29907
+      },
+      "policy_excess_share": 0.07255826395158324,
+      "policy_excess_tokens": 2170
+    },
+    {
+      "capacity_tokens": 2000,
+      "lru": {
+        "collects": {
+          "equal_split": 0.9802824879693797,
+          "marginal": 1.0,
+          "per_request": 1.8074306618032432,
+          "proportional": 0.9802824879693793,
+          "shapley": 0.9802824879693794
+        },
+        "evictions": 30062,
+        "hit_share": 0.9048881927510695,
+        "is_a_bill": {
+          "equal_split": false,
+          "marginal": true,
+          "per_request": false,
+          "proportional": false,
+          "shapley": false
+        },
+        "prefill_tokens": 32062
+      },
+      "oracle": {
+        "collects": {
+          "equal_split": 0.9949545289684727,
+          "marginal": 1.0,
+          "per_request": 1.8344827586206895,
+          "proportional": 0.9949545289684724,
+          "shapley": 0.9949545289684725
+        },
+        "evictions": 24491,
+        "hit_share": 0.9214145441384998,
+        "is_a_bill": {
+          "equal_split": false,
+          "marginal": true,
+          "per_request": false,
+          "proportional": false,
+          "shapley": false
+        },
+        "prefill_tokens": 26491
+      },
+      "policy_excess_share": 0.2102978370012457,
+      "policy_excess_tokens": 5571
+    },
+    {
+      "capacity_tokens": 4000,
+      "lru": {
+        "collects": {
+          "equal_split": 0.980482328988719,
+          "marginal": 1.0,
+          "per_request": 1.8077991257820174,
+          "proportional": 0.9804823289887187,
+          "shapley": 0.9804823289887188
+        },
+        "evictions": 27985,
+        "hit_share": 0.905116612973082,
+        "is_a_bill": {
+          "equal_split": false,
+          "marginal": true,
+          "per_request": false,
+          "proportional": false,
+          "shapley": false
+        },
+        "prefill_tokens": 31985
+      },
+      "oracle": {
+        "collects": {
+          "equal_split": 1.0000000000000002,
+          "marginal": 1.0,
+          "per_request": 1.8437855250758093,
+          "proportional": 0.9999999999999999,
+          "shapley": 1.0
+        },
+        "evictions": 20613,
+        "hit_share": 0.9269856243584952,
+        "is_a_bill": {
+          "equal_split": true,
+          "marginal": true,
+          "per_request": false,
+          "proportional": true,
+          "shapley": true
+        },
+        "prefill_tokens": 24613
+      },
+      "policy_excess_share": 0.2995165156624548,
+      "policy_excess_tokens": 7372
+    },
+    {
+      "capacity_tokens": 8000,
+      "lru": {
+        "collects": {
+          "equal_split": 0.9967889537856971,
+          "marginal": 1.0,
+          "per_request": 1.837865044545528,
+          "proportional": 0.9967889537856969,
+          "shapley": 0.996788953785697
+        },
+        "evictions": 17806,
+        "hit_share": 0.9234465941654949,
+        "is_a_bill": {
+          "equal_split": false,
+          "marginal": true,
+          "per_request": false,
+          "proportional": false,
+          "shapley": false
+        },
+        "prefill_tokens": 25806
+      },
+      "oracle": {
+        "collects": {
+          "equal_split": 1.0000000000000002,
+          "marginal": 1.0,
+          "per_request": 1.8437855250758093,
+          "proportional": 0.9999999999999999,
+          "shapley": 1.0
+        },
+        "evictions": 16613,
+        "hit_share": 0.9269856243584952,
+        "is_a_bill": {
+          "equal_split": true,
+          "marginal": true,
+          "per_request": false,
+          "proportional": true,
+          "shapley": true
+        },
+        "prefill_tokens": 24613
+      },
+      "policy_excess_share": 0.04847032056230447,
+      "policy_excess_tokens": 1193
+    },
+    {
+      "capacity_tokens": 12000,
+      "lru": {
+        "collects": {
+          "equal_split": 0.998587071706111,
+          "marginal": 1.0,
+          "per_request": 1.8411803883395665,
+          "proportional": 0.9985870717061107,
+          "shapley": 0.9985870717061109
+        },
+        "evictions": 13137,
+        "hit_share": 0.9254311802502536,
+        "is_a_bill": {
+          "equal_split": false,
+          "marginal": true,
+          "per_request": false,
+          "proportional": false,
+          "shapley": false
+        },
+        "prefill_tokens": 25137
+      },
+      "oracle": {
+        "collects": {
+          "equal_split": 1.0000000000000002,
+          "marginal": 1.0,
+          "per_request": 1.8437855250758093,
+          "proportional": 0.9999999999999999,
+          "shapley": 1.0
+        },
+        "evictions": 12613,
+        "hit_share": 0.9269856243584952,
+        "is_a_bill": {
+          "equal_split": true,
+          "marginal": true,
+          "per_request": false,
+          "proportional": true,
+          "shapley": true
+        },
+        "prefill_tokens": 24613
+      },
+      "policy_excess_share": 0.021289562426360053,
+      "policy_excess_tokens": 524
+    },
+    {
+      "capacity_tokens": 16000,
+      "lru": {
+        "collects": {
+          "equal_split": 0.9998110186902517,
+          "marginal": 1.0,
+          "per_request": 1.8434370840723853,
+          "proportional": 0.9998110186902514,
+          "shapley": 0.9998110186902516
+        },
+        "evictions": 8683,
+        "hit_share": 0.926777969611211,
+        "is_a_bill": {
+          "equal_split": false,
+          "marginal": true,
+          "per_request": false,
+          "proportional": false,
+          "shapley": false
+        },
+        "prefill_tokens": 24683
+      },
+      "oracle": {
+        "collects": {
+          "equal_split": 1.0000000000000002,
+          "marginal": 1.0,
+          "per_request": 1.8437855250758093,
+          "proportional": 0.9999999999999999,
+          "shapley": 1.0
+        },
+        "evictions": 8613,
+        "hit_share": 0.9269856243584952,
+        "is_a_bill": {
+          "equal_split": true,
+          "marginal": true,
+          "per_request": false,
+          "proportional": true,
+          "shapley": true
+        },
+        "prefill_tokens": 24613
+      },
+      "policy_excess_share": 0.0028440255149717627,
+      "policy_excess_tokens": 70
+    },
+    {
+      "capacity_tokens": 20000,
+      "lru": {
+        "collects": {
+          "equal_split": 1.0000000000000002,
+          "marginal": 1.0,
+          "per_request": 1.8437855250758093,
+          "proportional": 0.9999999999999999,
+          "shapley": 1.0
+        },
+        "evictions": 4613,
+        "hit_share": 0.9269856243584952,
+        "is_a_bill": {
+          "equal_split": true,
+          "marginal": true,
+          "per_request": false,
+          "proportional": true,
+          "shapley": true
+        },
+        "prefill_tokens": 24613
+      },
+      "oracle": {
+        "collects": {
+          "equal_split": 1.0000000000000002,
+          "marginal": 1.0,
+          "per_request": 1.8437855250758093,
+          "proportional": 0.9999999999999999,
+          "shapley": 1.0
+        },
+        "evictions": 4613,
+        "hit_share": 0.9269856243584952,
+        "is_a_bill": {
+          "equal_split": true,
+          "marginal": true,
+          "per_request": false,
+          "proportional": true,
+          "shapley": true
+        },
+        "prefill_tokens": 24613
+      },
+      "policy_excess_share": 0.0,
+      "policy_excess_tokens": 0
+    },
+    {
+      "capacity_tokens": 24613,
+      "lru": {
+        "collects": {
+          "equal_split": 1.0000000000000002,
+          "marginal": 1.0,
+          "per_request": 1.8437855250758093,
+          "proportional": 0.9999999999999999,
+          "shapley": 1.0
+        },
+        "evictions": 0,
+        "hit_share": 0.9269856243584952,
+        "is_a_bill": {
+          "equal_split": true,
+          "marginal": true,
+          "per_request": false,
+          "proportional": true,
+          "shapley": true
+        },
+        "prefill_tokens": 24613
+      },
+      "oracle": {
+        "collects": {
+          "equal_split": 1.0000000000000002,
+          "marginal": 1.0,
+          "per_request": 1.8437855250758093,
+          "proportional": 0.9999999999999999,
+          "shapley": 1.0
+        },
+        "evictions": 0,
+        "hit_share": 0.9269856243584952,
+        "is_a_bill": {
+          "equal_split": true,
+          "marginal": true,
+          "per_request": false,
+          "proportional": true,
+          "shapley": true
+        },
+        "prefill_tokens": 24613
+      },
+      "policy_excess_share": 0.0,
+      "policy_excess_tokens": 0
+    },
+    {
+      "capacity_tokens": 32000,
+      "lru": {
+        "collects": {
+          "equal_split": 1.0000000000000002,
+          "marginal": 1.0,
+          "per_request": 1.8437855250758093,
+          "proportional": 0.9999999999999999,
+          "shapley": 1.0
+        },
+        "evictions": 0,
+        "hit_share": 0.9269856243584952,
+        "is_a_bill": {
+          "equal_split": true,
+          "marginal": true,
+          "per_request": false,
+          "proportional": true,
+          "shapley": true
+        },
+        "prefill_tokens": 24613
+      },
+      "oracle": {
+        "collects": {
+          "equal_split": 1.0000000000000002,
+          "marginal": 1.0,
+          "per_request": 1.8437855250758093,
+          "proportional": 0.9999999999999999,
+          "shapley": 1.0
+        },
+        "evictions": 0,
+        "hit_share": 0.9269856243584952,
+        "is_a_bill": {
+          "equal_split": true,
+          "marginal": true,
+          "per_request": false,
+          "proportional": true,
+          "shapley": true
+        },
+        "prefill_tokens": 24613
+      },
+      "policy_excess_share": 0.0,
+      "policy_excess_tokens": 0
+    }
+  ],
+  "seeds": 3,
+  "shipped_capacity": 8000,
+  "shipped_capacity_share_of_working_set": 0.3250314874253443,
+  "zero_eviction_capacity_is_the_anchor": true
+}

@@ -1,0 +1,160 @@
+{
+  "anchor_holds_unbounded": {
+    "floor": 0.125,
+    "high": 1.0,
+    "low": 0.6755924351161198,
+    "measured_zero": false,
+    "successes": 8,
+    "trials": 8,
+    "value": 1.0
+  },
+  "anchor_holds_uncached": {
+    "floor": 0.125,
+    "high": 1.0,
+    "low": 0.6755924351161198,
+    "measured_zero": false,
+    "successes": 8,
+    "trials": 8,
+    "value": 1.0
+  },
+  "anchor_holds_under_permutation": {
+    "floor": 0.010416666666666666,
+    "high": 1.0,
+    "low": 0.9615244121423243,
+    "measured_zero": false,
+    "successes": 96,
+    "trials": 96,
+    "value": 1.0
+  },
+  "distinct_prefix_tokens": 24613,
+  "headline_seed": 11,
+  "nodes_by_tenant_count": {
+    "1": 21510,
+    "2": 661,
+    "3": 576,
+    "4": 1853,
+    "8": 11,
+    "16": 1,
+    "24": 1
+  },
+  "prompt_tokens": 337098,
+  "requests": 960,
+  "reuse_share": {
+    "max": 0.9285697328672408,
+    "mean": 0.9278322885694051,
+    "median": 0.9278236004633611,
+    "min": 0.9269856243584952,
+    "p95": 0.9285233156526677
+  },
+  "rows": [
+    {
+      "distinct_prefix_tokens": 24613,
+      "output_tokens": 86431,
+      "prompt_tokens": 337098,
+      "requests": 960,
+      "reuse_share": 0.9269856243584952,
+      "seed": 11,
+      "shared_nodes": 3103,
+      "tenants": 24,
+      "unbounded_prefill": 24613,
+      "uncached_prefill": 337098,
+      "vocabulary_size": 311
+    },
+    {
+      "distinct_prefix_tokens": 24196,
+      "output_tokens": 86528,
+      "prompt_tokens": 337328,
+      "requests": 960,
+      "reuse_share": 0.9282715932267704,
+      "seed": 12,
+      "shared_nodes": 3493,
+      "tenants": 24,
+      "unbounded_prefill": 24196,
+      "uncached_prefill": 337328,
+      "vocabulary_size": 311
+    },
+    {
+      "distinct_prefix_tokens": 24071,
+      "output_tokens": 85886,
+      "prompt_tokens": 336986,
+      "requests": 960,
+      "reuse_share": 0.9285697328672408,
+      "seed": 13,
+      "shared_nodes": 3536,
+      "tenants": 24,
+      "unbounded_prefill": 24071,
+      "uncached_prefill": 336986,
+      "vocabulary_size": 311
+    },
+    {
+      "distinct_prefix_tokens": 24418,
+      "output_tokens": 87026,
+      "prompt_tokens": 337567,
+      "requests": 960,
+      "reuse_share": 0.9276647302609556,
+      "seed": 14,
+      "shared_nodes": 3248,
+      "tenants": 24,
+      "unbounded_prefill": 24418,
+      "uncached_prefill": 337567,
+      "vocabulary_size": 311
+    },
+    {
+      "distinct_prefix_tokens": 24606,
+      "output_tokens": 86511,
+      "prompt_tokens": 337449,
+      "requests": 960,
+      "reuse_share": 0.9270823146608821,
+      "seed": 15,
+      "shared_nodes": 3220,
+      "tenants": 24,
+      "unbounded_prefill": 24606,
+      "uncached_prefill": 337449,
+      "vocabulary_size": 311
+    },
+    {
+      "distinct_prefix_tokens": 24290,
+      "output_tokens": 86529,
+      "prompt_tokens": 337031,
+      "requests": 960,
+      "reuse_share": 0.9279294782972486,
+      "seed": 16,
+      "shared_nodes": 3301,
+      "tenants": 24,
+      "unbounded_prefill": 24290,
+      "uncached_prefill": 337031,
+      "vocabulary_size": 311
+    },
+    {
+      "distinct_prefix_tokens": 24306,
+      "output_tokens": 86106,
+      "prompt_tokens": 336265,
+      "requests": 960,
+      "reuse_share": 0.9277177226294737,
+      "seed": 17,
+      "shared_nodes": 3187,
+      "tenants": 24,
+      "unbounded_prefill": 24306,
+      "uncached_prefill": 336265,
+      "vocabulary_size": 311
+    },
+    {
+      "distinct_prefix_tokens": 24166,
+      "output_tokens": 86658,
+      "prompt_tokens": 337689,
+      "requests": 960,
+      "reuse_share": 0.9284371122541747,
+      "seed": 18,
+      "shared_nodes": 3239,
+      "tenants": 24,
+      "unbounded_prefill": 24166,
+      "uncached_prefill": 337689,
+      "vocabulary_size": 311
+    }
+  ],
+  "seeds": 8,
+  "shared_node_share": 0.12607158818510544,
+  "shared_nodes": 3103,
+  "tenants": 24,
+  "vocabulary_size": 311
+}

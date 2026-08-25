@@ -1,0 +1,1257 @@
+{
+  "all_three": {
+    "equal_split": {
+      "floor": 0.041666666666666664,
+      "high": 0.13797620467498017,
+      "low": 1.3877787807814457e-17,
+      "measured_zero": true,
+      "successes": 0,
+      "trials": 24,
+      "value": 0.0
+    },
+    "marginal": {
+      "floor": 0.041666666666666664,
+      "high": 0.13797620467498017,
+      "low": 1.3877787807814457e-17,
+      "measured_zero": true,
+      "successes": 0,
+      "trials": 24,
+      "value": 0.0
+    },
+    "per_request": {
+      "floor": 0.041666666666666664,
+      "high": 0.13797620467498017,
+      "low": 1.3877787807814457e-17,
+      "measured_zero": true,
+      "successes": 0,
+      "trials": 24,
+      "value": 0.0
+    },
+    "proportional": {
+      "floor": 0.041666666666666664,
+      "high": 0.13797620467498017,
+      "low": 1.3877787807814457e-17,
+      "measured_zero": true,
+      "successes": 0,
+      "trials": 24,
+      "value": 0.0
+    },
+    "shapley": {
+      "floor": 0.041666666666666664,
+      "high": 0.6492513464108051,
+      "low": 0.2789133373121099,
+      "measured_zero": false,
+      "successes": 11,
+      "trials": 24,
+      "value": 0.4583333333333333
+    }
+  },
+  "all_three_when_recomputing": {
+    "equal_split": {
+      "floor": 0.07692307692307693,
+      "high": 0.22809537235419838,
+      "low": 0.0,
+      "measured_zero": true,
+      "successes": 0,
+      "trials": 13,
+      "value": 0.0
+    },
+    "marginal": {
+      "floor": 0.07692307692307693,
+      "high": 0.22809537235419838,
+      "low": 0.0,
+      "measured_zero": true,
+      "successes": 0,
+      "trials": 13,
+      "value": 0.0
+    },
+    "per_request": {
+      "floor": 0.07692307692307693,
+      "high": 0.22809537235419838,
+      "low": 0.0,
+      "measured_zero": true,
+      "successes": 0,
+      "trials": 13,
+      "value": 0.0
+    },
+    "proportional": {
+      "floor": 0.07692307692307693,
+      "high": 0.22809537235419838,
+      "low": 0.0,
+      "measured_zero": true,
+      "successes": 0,
+      "trials": 13,
+      "value": 0.0
+    },
+    "shapley": {
+      "floor": 0.07692307692307693,
+      "high": 0.22809537235419838,
+      "low": 0.0,
+      "measured_zero": true,
+      "successes": 0,
+      "trials": 13,
+      "value": 0.0
+    }
+  },
+  "boundary": "a scheme has all three properties exactly when the cache never recomputes a prefix it had already computed",
+  "boundary_holds": true,
+  "capacity_fractions": [
+    0.08,
+    0.25,
+    0.6,
+    0.9,
+    1.0,
+    2.0
+  ],
+  "cells": [
+    {
+      "capacity_fraction": 0.08,
+      "capacity_tokens": 234,
+      "distinct_prefix_tokens": 2927,
+      "evictions": 14098,
+      "prefill_tokens": 14332,
+      "prompt_families": 2,
+      "recomputed_a_cached_prefix": true,
+      "schemes": {
+        "equal_split": {
+          "all_three": false,
+          "collects": 0.7677946086814887,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "marginal": {
+          "all_three": false,
+          "collects": 1.0,
+          "efficient": false,
+          "fair": false,
+          "order_independent": false
+        },
+        "per_request": {
+          "all_three": false,
+          "collects": 1.4006433748676603,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "proportional": {
+          "all_three": false,
+          "collects": 0.7677946086814887,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "shapley": {
+          "all_three": false,
+          "collects": 0.7677946086814887,
+          "efficient": false,
+          "fair": true,
+          "order_independent": true
+        }
+      },
+      "tenants": 8
+    },
+    {
+      "capacity_fraction": 0.25,
+      "capacity_tokens": 732,
+      "distinct_prefix_tokens": 2927,
+      "evictions": 2985,
+      "prefill_tokens": 3717,
+      "prompt_families": 2,
+      "recomputed_a_cached_prefix": true,
+      "schemes": {
+        "equal_split": {
+          "all_three": false,
+          "collects": 0.9794810524401963,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "marginal": {
+          "all_three": false,
+          "collects": 1.0,
+          "efficient": false,
+          "fair": false,
+          "order_independent": false
+        },
+        "per_request": {
+          "all_three": false,
+          "collects": 1.7868107321887743,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "proportional": {
+          "all_three": false,
+          "collects": 0.9794810524401963,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "shapley": {
+          "all_three": false,
+          "collects": 0.9794810524401963,
+          "efficient": false,
+          "fair": true,
+          "order_independent": true
+        }
+      },
+      "tenants": 8
+    },
+    {
+      "capacity_fraction": 0.6,
+      "capacity_tokens": 1756,
+      "distinct_prefix_tokens": 2927,
+      "evictions": 1197,
+      "prefill_tokens": 2953,
+      "prompt_families": 2,
+      "recomputed_a_cached_prefix": true,
+      "schemes": {
+        "equal_split": {
+          "all_three": false,
+          "collects": 0.999311021013859,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "marginal": {
+          "all_three": false,
+          "collects": 1.0,
+          "efficient": false,
+          "fair": false,
+          "order_independent": false
+        },
+        "per_request": {
+          "all_three": false,
+          "collects": 1.8229853989453322,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "proportional": {
+          "all_three": false,
+          "collects": 0.999311021013859,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "shapley": {
+          "all_three": false,
+          "collects": 0.999311021013859,
+          "efficient": false,
+          "fair": true,
+          "order_independent": true
+        }
+      },
+      "tenants": 8
+    },
+    {
+      "capacity_fraction": 0.9,
+      "capacity_tokens": 2634,
+      "distinct_prefix_tokens": 2927,
+      "evictions": 293,
+      "prefill_tokens": 2927,
+      "prompt_families": 2,
+      "recomputed_a_cached_prefix": false,
+      "schemes": {
+        "equal_split": {
+          "all_three": false,
+          "collects": 1.0,
+          "efficient": true,
+          "fair": false,
+          "order_independent": true
+        },
+        "marginal": {
+          "all_three": false,
+          "collects": 1.0,
+          "efficient": true,
+          "fair": false,
+          "order_independent": false
+        },
+        "per_request": {
+          "all_three": false,
+          "collects": 1.8242422635305349,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "proportional": {
+          "all_three": false,
+          "collects": 1.0,
+          "efficient": true,
+          "fair": false,
+          "order_independent": true
+        },
+        "shapley": {
+          "all_three": true,
+          "collects": 1.0,
+          "efficient": true,
+          "fair": true,
+          "order_independent": true
+        }
+      },
+      "tenants": 8
+    },
+    {
+      "capacity_fraction": 1.0,
+      "capacity_tokens": 2927,
+      "distinct_prefix_tokens": 2927,
+      "evictions": 0,
+      "prefill_tokens": 2927,
+      "prompt_families": 2,
+      "recomputed_a_cached_prefix": false,
+      "schemes": {
+        "equal_split": {
+          "all_three": false,
+          "collects": 1.0,
+          "efficient": true,
+          "fair": false,
+          "order_independent": true
+        },
+        "marginal": {
+          "all_three": false,
+          "collects": 1.0,
+          "efficient": true,
+          "fair": false,
+          "order_independent": false
+        },
+        "per_request": {
+          "all_three": false,
+          "collects": 1.8242422635305349,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "proportional": {
+          "all_three": false,
+          "collects": 1.0,
+          "efficient": true,
+          "fair": false,
+          "order_independent": true
+        },
+        "shapley": {
+          "all_three": true,
+          "collects": 1.0,
+          "efficient": true,
+          "fair": true,
+          "order_independent": true
+        }
+      },
+      "tenants": 8
+    },
+    {
+      "capacity_fraction": 2.0,
+      "capacity_tokens": 5854,
+      "distinct_prefix_tokens": 2927,
+      "evictions": 0,
+      "prefill_tokens": 2927,
+      "prompt_families": 2,
+      "recomputed_a_cached_prefix": false,
+      "schemes": {
+        "equal_split": {
+          "all_three": false,
+          "collects": 1.0,
+          "efficient": true,
+          "fair": false,
+          "order_independent": true
+        },
+        "marginal": {
+          "all_three": false,
+          "collects": 1.0,
+          "efficient": true,
+          "fair": false,
+          "order_independent": false
+        },
+        "per_request": {
+          "all_three": false,
+          "collects": 1.8242422635305349,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "proportional": {
+          "all_three": false,
+          "collects": 1.0,
+          "efficient": true,
+          "fair": false,
+          "order_independent": true
+        },
+        "shapley": {
+          "all_three": true,
+          "collects": 1.0,
+          "efficient": true,
+          "fair": true,
+          "order_independent": true
+        }
+      },
+      "tenants": 8
+    },
+    {
+      "capacity_fraction": 0.08,
+      "capacity_tokens": 375,
+      "distinct_prefix_tokens": 4685,
+      "evictions": 12028,
+      "prefill_tokens": 12403,
+      "prompt_families": 4,
+      "recomputed_a_cached_prefix": true,
+      "schemes": {
+        "equal_split": {
+          "all_three": false,
+          "collects": 0.8795398854395904,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "marginal": {
+          "all_three": false,
+          "collects": 1.0,
+          "efficient": false,
+          "fair": false,
+          "order_independent": false
+        },
+        "per_request": {
+          "all_three": false,
+          "collects": 1.5935914844469417,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "proportional": {
+          "all_three": false,
+          "collects": 0.8795398854395906,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "shapley": {
+          "all_three": false,
+          "collects": 0.8795398854395905,
+          "efficient": false,
+          "fair": true,
+          "order_independent": true
+        }
+      },
+      "tenants": 12
+    },
+    {
+      "capacity_fraction": 0.25,
+      "capacity_tokens": 1171,
+      "distinct_prefix_tokens": 4685,
+      "evictions": 6665,
+      "prefill_tokens": 7836,
+      "prompt_families": 4,
+      "recomputed_a_cached_prefix": true,
+      "schemes": {
+        "equal_split": {
+          "all_three": false,
+          "collects": 0.9470455767679482,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "marginal": {
+          "all_three": false,
+          "collects": 1.0,
+          "efficient": false,
+          "fair": false,
+          "order_independent": false
+        },
+        "per_request": {
+          "all_three": false,
+          "collects": 1.7159014520032267,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "proportional": {
+          "all_three": false,
+          "collects": 0.9470455767679485,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "shapley": {
+          "all_three": false,
+          "collects": 0.9470455767679484,
+          "efficient": false,
+          "fair": true,
+          "order_independent": true
+        }
+      },
+      "tenants": 12
+    },
+    {
+      "capacity_fraction": 0.6,
+      "capacity_tokens": 2811,
+      "distinct_prefix_tokens": 4685,
+      "evictions": 1942,
+      "prefill_tokens": 4753,
+      "prompt_families": 4,
+      "recomputed_a_cached_prefix": true,
+      "schemes": {
+        "equal_split": {
+          "all_three": false,
+          "collects": 0.9987947749951258,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "marginal": {
+          "all_three": false,
+          "collects": 1.0,
+          "efficient": false,
+          "fair": false,
+          "order_independent": false
+        },
+        "per_request": {
+          "all_three": false,
+          "collects": 1.8096630687155493,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "proportional": {
+          "all_three": false,
+          "collects": 0.998794774995126,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "shapley": {
+          "all_three": false,
+          "collects": 0.9987947749951259,
+          "efficient": false,
+          "fair": true,
+          "order_independent": true
+        }
+      },
+      "tenants": 12
+    },
+    {
+      "capacity_fraction": 0.9,
+      "capacity_tokens": 4216,
+      "distinct_prefix_tokens": 4685,
+      "evictions": 469,
+      "prefill_tokens": 4685,
+      "prompt_families": 4,
+      "recomputed_a_cached_prefix": false,
+      "schemes": {
+        "equal_split": {
+          "all_three": false,
+          "collects": 0.9999999999999999,
+          "efficient": true,
+          "fair": false,
+          "order_independent": true
+        },
+        "marginal": {
+          "all_three": false,
+          "collects": 1.0,
+          "efficient": false,
+          "fair": false,
+          "order_independent": false
+        },
+        "per_request": {
+          "all_three": false,
+          "collects": 1.8118467517257288,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "proportional": {
+          "all_three": false,
+          "collects": 1.0000000000000002,
+          "efficient": true,
+          "fair": false,
+          "order_independent": true
+        },
+        "shapley": {
+          "all_three": true,
+          "collects": 1.0,
+          "efficient": true,
+          "fair": true,
+          "order_independent": true
+        }
+      },
+      "tenants": 12
+    },
+    {
+      "capacity_fraction": 1.0,
+      "capacity_tokens": 4685,
+      "distinct_prefix_tokens": 4685,
+      "evictions": 0,
+      "prefill_tokens": 4685,
+      "prompt_families": 4,
+      "recomputed_a_cached_prefix": false,
+      "schemes": {
+        "equal_split": {
+          "all_three": false,
+          "collects": 0.9999999999999999,
+          "efficient": true,
+          "fair": false,
+          "order_independent": true
+        },
+        "marginal": {
+          "all_three": false,
+          "collects": 1.0,
+          "efficient": true,
+          "fair": false,
+          "order_independent": false
+        },
+        "per_request": {
+          "all_three": false,
+          "collects": 1.8118467517257288,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "proportional": {
+          "all_three": false,
+          "collects": 1.0000000000000002,
+          "efficient": true,
+          "fair": false,
+          "order_independent": true
+        },
+        "shapley": {
+          "all_three": true,
+          "collects": 1.0,
+          "efficient": true,
+          "fair": true,
+          "order_independent": true
+        }
+      },
+      "tenants": 12
+    },
+    {
+      "capacity_fraction": 2.0,
+      "capacity_tokens": 9370,
+      "distinct_prefix_tokens": 4685,
+      "evictions": 0,
+      "prefill_tokens": 4685,
+      "prompt_families": 4,
+      "recomputed_a_cached_prefix": false,
+      "schemes": {
+        "equal_split": {
+          "all_three": false,
+          "collects": 0.9999999999999999,
+          "efficient": true,
+          "fair": false,
+          "order_independent": true
+        },
+        "marginal": {
+          "all_three": false,
+          "collects": 1.0,
+          "efficient": true,
+          "fair": false,
+          "order_independent": false
+        },
+        "per_request": {
+          "all_three": false,
+          "collects": 1.8118467517257288,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "proportional": {
+          "all_three": false,
+          "collects": 1.0000000000000002,
+          "efficient": true,
+          "fair": false,
+          "order_independent": true
+        },
+        "shapley": {
+          "all_three": true,
+          "collects": 1.0,
+          "efficient": true,
+          "fair": true,
+          "order_independent": true
+        }
+      },
+      "tenants": 12
+    },
+    {
+      "capacity_fraction": 0.08,
+      "capacity_tokens": 673,
+      "distinct_prefix_tokens": 8414,
+      "evictions": 20738,
+      "prefill_tokens": 21411,
+      "prompt_families": 6,
+      "recomputed_a_cached_prefix": true,
+      "schemes": {
+        "equal_split": {
+          "all_three": false,
+          "collects": 0.895803102577464,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "marginal": {
+          "all_three": false,
+          "collects": 1.0,
+          "efficient": false,
+          "fair": false,
+          "order_independent": false
+        },
+        "per_request": {
+          "all_three": false,
+          "collects": 1.6016033992063174,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "proportional": {
+          "all_three": false,
+          "collects": 0.8958031025774641,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "shapley": {
+          "all_three": false,
+          "collects": 0.8958031025774644,
+          "efficient": false,
+          "fair": true,
+          "order_independent": true
+        }
+      },
+      "tenants": 24
+    },
+    {
+      "capacity_fraction": 0.25,
+      "capacity_tokens": 2104,
+      "distinct_prefix_tokens": 8414,
+      "evictions": 10430,
+      "prefill_tokens": 12534,
+      "prompt_families": 6,
+      "recomputed_a_cached_prefix": true,
+      "schemes": {
+        "equal_split": {
+          "all_three": false,
+          "collects": 0.9644392273300072,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "marginal": {
+          "all_three": false,
+          "collects": 1.0,
+          "efficient": false,
+          "fair": false,
+          "order_independent": false
+        },
+        "per_request": {
+          "all_three": false,
+          "collects": 1.7243176992525333,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "proportional": {
+          "all_three": false,
+          "collects": 0.9644392273300073,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "shapley": {
+          "all_three": false,
+          "collects": 0.9644392273300076,
+          "efficient": false,
+          "fair": true,
+          "order_independent": true
+        }
+      },
+      "tenants": 24
+    },
+    {
+      "capacity_fraction": 0.6,
+      "capacity_tokens": 5048,
+      "distinct_prefix_tokens": 8414,
+      "evictions": 3517,
+      "prefill_tokens": 8565,
+      "prompt_families": 6,
+      "recomputed_a_cached_prefix": true,
+      "schemes": {
+        "equal_split": {
+          "all_three": false,
+          "collects": 0.998650448212067,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "marginal": {
+          "all_three": false,
+          "collects": 1.0,
+          "efficient": false,
+          "fair": false,
+          "order_independent": false
+        },
+        "per_request": {
+          "all_three": false,
+          "collects": 1.7854838277221174,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "proportional": {
+          "all_three": false,
+          "collects": 0.9986504482120672,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "shapley": {
+          "all_three": false,
+          "collects": 0.9986504482120676,
+          "efficient": false,
+          "fair": true,
+          "order_independent": true
+        }
+      },
+      "tenants": 24
+    },
+    {
+      "capacity_fraction": 0.9,
+      "capacity_tokens": 7573,
+      "distinct_prefix_tokens": 8414,
+      "evictions": 841,
+      "prefill_tokens": 8414,
+      "prompt_families": 6,
+      "recomputed_a_cached_prefix": false,
+      "schemes": {
+        "equal_split": {
+          "all_three": false,
+          "collects": 0.9999999999999998,
+          "efficient": true,
+          "fair": false,
+          "order_independent": true
+        },
+        "marginal": {
+          "all_three": false,
+          "collects": 1.0,
+          "efficient": false,
+          "fair": false,
+          "order_independent": false
+        },
+        "per_request": {
+          "all_three": false,
+          "collects": 1.7878966868925523,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "proportional": {
+          "all_three": false,
+          "collects": 0.9999999999999999,
+          "efficient": true,
+          "fair": false,
+          "order_independent": true
+        },
+        "shapley": {
+          "all_three": true,
+          "collects": 1.0000000000000002,
+          "efficient": true,
+          "fair": true,
+          "order_independent": true
+        }
+      },
+      "tenants": 24
+    },
+    {
+      "capacity_fraction": 1.0,
+      "capacity_tokens": 8414,
+      "distinct_prefix_tokens": 8414,
+      "evictions": 0,
+      "prefill_tokens": 8414,
+      "prompt_families": 6,
+      "recomputed_a_cached_prefix": false,
+      "schemes": {
+        "equal_split": {
+          "all_three": false,
+          "collects": 0.9999999999999998,
+          "efficient": true,
+          "fair": false,
+          "order_independent": true
+        },
+        "marginal": {
+          "all_three": false,
+          "collects": 1.0,
+          "efficient": true,
+          "fair": false,
+          "order_independent": false
+        },
+        "per_request": {
+          "all_three": false,
+          "collects": 1.7878966868925523,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "proportional": {
+          "all_three": false,
+          "collects": 0.9999999999999999,
+          "efficient": true,
+          "fair": false,
+          "order_independent": true
+        },
+        "shapley": {
+          "all_three": true,
+          "collects": 1.0000000000000002,
+          "efficient": true,
+          "fair": true,
+          "order_independent": true
+        }
+      },
+      "tenants": 24
+    },
+    {
+      "capacity_fraction": 2.0,
+      "capacity_tokens": 16828,
+      "distinct_prefix_tokens": 8414,
+      "evictions": 0,
+      "prefill_tokens": 8414,
+      "prompt_families": 6,
+      "recomputed_a_cached_prefix": false,
+      "schemes": {
+        "equal_split": {
+          "all_three": false,
+          "collects": 0.9999999999999998,
+          "efficient": true,
+          "fair": false,
+          "order_independent": true
+        },
+        "marginal": {
+          "all_three": false,
+          "collects": 1.0,
+          "efficient": true,
+          "fair": false,
+          "order_independent": false
+        },
+        "per_request": {
+          "all_three": false,
+          "collects": 1.7878966868925523,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "proportional": {
+          "all_three": false,
+          "collects": 0.9999999999999999,
+          "efficient": true,
+          "fair": false,
+          "order_independent": true
+        },
+        "shapley": {
+          "all_three": true,
+          "collects": 1.0000000000000002,
+          "efficient": true,
+          "fair": true,
+          "order_independent": true
+        }
+      },
+      "tenants": 24
+    },
+    {
+      "capacity_fraction": 0.08,
+      "capacity_tokens": 679,
+      "distinct_prefix_tokens": 8486,
+      "evictions": 21009,
+      "prefill_tokens": 21688,
+      "prompt_families": 3,
+      "recomputed_a_cached_prefix": true,
+      "schemes": {
+        "equal_split": {
+          "all_three": false,
+          "collects": 0.9125556379821961,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "marginal": {
+          "all_three": false,
+          "collects": 1.0,
+          "efficient": false,
+          "fair": false,
+          "order_independent": false
+        },
+        "per_request": {
+          "all_three": false,
+          "collects": 1.7103645612547689,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "proportional": {
+          "all_three": false,
+          "collects": 0.9125556379821961,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "shapley": {
+          "all_three": false,
+          "collects": 0.9125556379821959,
+          "efficient": false,
+          "fair": true,
+          "order_independent": true
+        }
+      },
+      "tenants": 30
+    },
+    {
+      "capacity_fraction": 0.25,
+      "capacity_tokens": 2122,
+      "distinct_prefix_tokens": 8486,
+      "evictions": 7431,
+      "prefill_tokens": 9553,
+      "prompt_families": 3,
+      "recomputed_a_cached_prefix": true,
+      "schemes": {
+        "equal_split": {
+          "all_three": false,
+          "collects": 0.9923149501948274,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "marginal": {
+          "all_three": false,
+          "collects": 1.0,
+          "efficient": false,
+          "fair": false,
+          "order_independent": false
+        },
+        "per_request": {
+          "all_three": false,
+          "collects": 1.8598540776859862,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "proportional": {
+          "all_three": false,
+          "collects": 0.9923149501948274,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "shapley": {
+          "all_three": false,
+          "collects": 0.9923149501948272,
+          "efficient": false,
+          "fair": true,
+          "order_independent": true
+        }
+      },
+      "tenants": 30
+    },
+    {
+      "capacity_fraction": 0.6,
+      "capacity_tokens": 5092,
+      "distinct_prefix_tokens": 8486,
+      "evictions": 3564,
+      "prefill_tokens": 8656,
+      "prompt_families": 3,
+      "recomputed_a_cached_prefix": true,
+      "schemes": {
+        "equal_split": {
+          "all_three": false,
+          "collects": 0.9987676158441109,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "marginal": {
+          "all_three": false,
+          "collects": 1.0,
+          "efficient": false,
+          "fair": false,
+          "order_independent": false
+        },
+        "per_request": {
+          "all_three": false,
+          "collects": 1.871948036884533,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "proportional": {
+          "all_three": false,
+          "collects": 0.9987676158441109,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "shapley": {
+          "all_three": false,
+          "collects": 0.9987676158441107,
+          "efficient": false,
+          "fair": true,
+          "order_independent": true
+        }
+      },
+      "tenants": 30
+    },
+    {
+      "capacity_fraction": 0.9,
+      "capacity_tokens": 7637,
+      "distinct_prefix_tokens": 8486,
+      "evictions": 850,
+      "prefill_tokens": 8487,
+      "prompt_families": 3,
+      "recomputed_a_cached_prefix": true,
+      "schemes": {
+        "equal_split": {
+          "all_three": false,
+          "collects": 0.9999927417891492,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "marginal": {
+          "all_three": false,
+          "collects": 1.0,
+          "efficient": false,
+          "fair": false,
+          "order_independent": false
+        },
+        "per_request": {
+          "all_three": false,
+          "collects": 1.874244238795137,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "proportional": {
+          "all_three": false,
+          "collects": 0.9999927417891492,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "shapley": {
+          "all_three": false,
+          "collects": 0.999992741789149,
+          "efficient": false,
+          "fair": true,
+          "order_independent": true
+        }
+      },
+      "tenants": 30
+    },
+    {
+      "capacity_fraction": 1.0,
+      "capacity_tokens": 8486,
+      "distinct_prefix_tokens": 8486,
+      "evictions": 0,
+      "prefill_tokens": 8486,
+      "prompt_families": 3,
+      "recomputed_a_cached_prefix": false,
+      "schemes": {
+        "equal_split": {
+          "all_three": false,
+          "collects": 1.0000000000000002,
+          "efficient": true,
+          "fair": false,
+          "order_independent": true
+        },
+        "marginal": {
+          "all_three": false,
+          "collects": 1.0,
+          "efficient": true,
+          "fair": false,
+          "order_independent": false
+        },
+        "per_request": {
+          "all_three": false,
+          "collects": 1.8742578425537475,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "proportional": {
+          "all_three": false,
+          "collects": 1.0000000000000002,
+          "efficient": true,
+          "fair": false,
+          "order_independent": true
+        },
+        "shapley": {
+          "all_three": true,
+          "collects": 1.0,
+          "efficient": true,
+          "fair": true,
+          "order_independent": true
+        }
+      },
+      "tenants": 30
+    },
+    {
+      "capacity_fraction": 2.0,
+      "capacity_tokens": 16972,
+      "distinct_prefix_tokens": 8486,
+      "evictions": 0,
+      "prefill_tokens": 8486,
+      "prompt_families": 3,
+      "recomputed_a_cached_prefix": false,
+      "schemes": {
+        "equal_split": {
+          "all_three": false,
+          "collects": 1.0000000000000002,
+          "efficient": true,
+          "fair": false,
+          "order_independent": true
+        },
+        "marginal": {
+          "all_three": false,
+          "collects": 1.0,
+          "efficient": true,
+          "fair": false,
+          "order_independent": false
+        },
+        "per_request": {
+          "all_three": false,
+          "collects": 1.8742578425537475,
+          "efficient": false,
+          "fair": false,
+          "order_independent": true
+        },
+        "proportional": {
+          "all_three": false,
+          "collects": 1.0000000000000002,
+          "efficient": true,
+          "fair": false,
+          "order_independent": true
+        },
+        "shapley": {
+          "all_three": true,
+          "collects": 1.0,
+          "efficient": true,
+          "fair": true,
+          "order_independent": true
+        }
+      },
+      "tenants": 30
+    }
+  ],
+  "cells_recomputing": 13,
+  "cells_total": 24,
+  "orderings": 6,
+  "shapes": [
+    {
+      "prompt_families": 2,
+      "tenants": 8
+    },
+    {
+      "prompt_families": 4,
+      "tenants": 12
+    },
+    {
+      "prompt_families": 6,
+      "tenants": 24
+    },
+    {
+      "prompt_families": 3,
+      "tenants": 30
+    }
+  ]
+}
