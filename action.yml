@@ -2,7 +2,7 @@ name: "prefix cost attribution audit"
 description: "Audit how a multi tenant LLM bill divides prefill cost under a prefix cache, and return not-an-attribution rather than a pass when the scheme does not sum to what the server spent"
 author: "Srujan Sadineni"
 branding:
-  icon: "divide"
+  icon: "pie-chart"
   color: "red"
 
 # Three exit codes reach the caller, and which one becomes a failed step is the
