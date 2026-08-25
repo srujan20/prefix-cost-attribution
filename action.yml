@@ -1,0 +1,111 @@
+name: "window parity audit"
+description: "Audit training and serving parity for windowed features, and return not-checkable rather than a pass when the log carries no ingest time"
+author: "Srujan Sadineni"
+branding:
+  icon: "clock"
+  color: "red"
+
+# Three exit codes reach the caller, and which one becomes a failed step is the
+# whole reason this file exists rather than a bare `run:` line.
+#
+# Exit 1 is a detected skew and fails. Exit 2 means the checks that would have
+# found a lateness skew could not run, because the log carries no ingest time,
+# and `not-checkable-fails` decides it. It defaults to false, because a team that
+# has just adopted this needs to see that verdict for a fortnight before it
+# starts blocking merges, and because the fix is a pipeline change rather than
+# something anybody can do in the pull request that first went amber. Exit 3 and
+# 4 are always failures, because they mean the audit did not run.
+
+inputs:
+  policy:
+    description: "Path to the policy file with the windows, aggregates and tolerances"
+    required: false
+    default: "configs/policy.yaml"
+  seed:
+    description: "Seed for the generated log"
+    required: false
+    default: "11"
+  late-share:
+    description: "Override the policy's lateness. 0 is the exact anchor: nothing late"
+    required: false
+    default: ""
+  no-ingest-time:
+    description: "Audit as a feature store that records only an event time"
+    required: false
+    default: "false"
+  html:
+    description: "Optional path for the self contained HTML report"
+    required: false
+    default: ""
+  warn-only:
+    description: "Report the verdict and never fail the step"
+    required: false
+    default: "false"
+  not-checkable-fails:
+    description: "Whether exit 2, the strongest checks could not run, fails the step"
+    required: false
+    default: "false"
+
+outputs:
+  verdict:
+    description: "parity-holds, skew-detected, or not-checkable"
+    value: ${{ steps.audit.outputs.verdict }}
+  exit-code:
+    description: "The audit's own exit code, whatever this action did about it"
+    value: ${{ steps.audit.outputs.exit-code }}
+
+runs:
+  using: composite
+  steps:
+    - name: Install the audit
+      shell: bash
+      # The lean install on purpose. This action never needs the second engine,
+      # and a composite action that dragged a JVM into somebody else's workflow
+      # would be a good way to never be adopted.
+      run: python -m pip install --quiet "${{ github.action_path }}"
+
+    - name: Run the audit
+      id: audit
+      shell: bash
+      run: |
+        set +e
+        flags=""
+        if [ -n "${{ inputs.late-share }}" ]; then
+          flags="$flags --late-share ${{ inputs.late-share }}"
+        fi
+        if [ -n "${{ inputs.html }}" ]; then
+          flags="$flags --html ${{ inputs.html }}"
+        fi
+        if [ "${{ inputs.no-ingest-time }}" = "true" ]; then
+          flags="$flags --no-ingest-time"
+        fi
+        output=$(python -m windowparity audit \
+          --policy "${{ inputs.policy }}" \
+          --seed "${{ inputs.seed }}" \
+          $flags 2>&1)
+        code=$?
+        set -e
+        echo "$output"
+        verdict=$(printf '%s\n' "$output" | sed -n 's/^verdict: //p' | head -1)
+        echo "verdict=${verdict}" >> "$GITHUB_OUTPUT"
+        echo "exit-code=${code}" >> "$GITHUB_OUTPUT"
+
+        {
+          echo "### Window parity audit"
+          echo
+          echo "Verdict: \`${verdict}\`, exit code ${code}."
+          echo
+          echo '```'
+          printf '%s\n' "$output"
+          echo '```'
+        } >> "$GITHUB_STEP_SUMMARY"
+
+        if [ "${{ inputs.warn-only }}" = "true" ]; then
+          echo "warn-only is set, so this step passes whatever the audit said"
+          exit 0
+        fi
+        if [ "$code" = "2" ] && [ "${{ inputs.not-checkable-fails }}" != "true" ]; then
+          echo "::warning::the checks that find a lateness skew could not run, because this log carries no ingest time. That is not a pass"
+          exit 0
+        fi
+        exit $code

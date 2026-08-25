@@ -171,6 +171,21 @@ def policy_from_mapping(raw: dict, *, source: str = "<mapping>") -> Policy:
     )
 
 
+def _display_path(resolved: Path) -> str:
+    """How a policy path is named in reports, which end up in committed images.
+
+    Relative to the repository when the file is inside it, absolute otherwise. An
+    absolute path is correct and is also a photograph of somebody's home
+    directory: the first screenshots taken for the README carried the full build
+    path of the machine that made them, which tells a reader nothing and dates
+    the image the moment the checkout moves.
+    """
+    try:
+        return str(resolved.relative_to(DEFAULT_POLICY_PATH.parents[1]))
+    except ValueError:
+        return str(resolved)
+
+
 def load_policy(path: str | os.PathLike[str] | None = None) -> Policy:
     resolved = Path(path) if path is not None else DEFAULT_POLICY_PATH
     if not resolved.is_file():
@@ -181,4 +196,4 @@ def load_policy(path: str | os.PathLike[str] | None = None) -> Policy:
         raise PolicyError(f"policy file {resolved} is not valid YAML: {exc}") from exc
     if not isinstance(raw, dict):
         raise PolicyError(f"policy file {resolved} must contain a mapping at the top level")
-    return policy_from_mapping(raw, source=str(resolved))
+    return policy_from_mapping(raw, source=_display_path(resolved.resolve()))

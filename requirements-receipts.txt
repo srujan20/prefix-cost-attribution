@@ -1,0 +1,12 @@
+# Pinned for the job that publishes figures. The test suite asserts properties and
+# inequalities, so it runs on three Python versions against whatever resolves. The
+# published rates are re-measured only in the receipts job, with these exact
+# versions, because a rate over a hundred and twenty tenant observations is worth
+# nothing if it moves with a minor bump.
+#
+# numpy is the one that matters here. It draws the workload, permutes the arrival
+# orders and computes the rank correlations, so a change to its generator would
+# change the corpus and every number derived from it. The tokeniser, the trie and
+# the allocation are pure Python by design and depend on none of this.
+numpy==2.4.4
+PyYAML==6.0.3

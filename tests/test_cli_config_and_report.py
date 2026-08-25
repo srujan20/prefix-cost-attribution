@@ -374,3 +374,24 @@ def test_a_vocabulary_describes_itself(tiny_policy):
 def test_the_workload_reports_its_output_tokens(tiny_policy):
     workload = build_workload(tiny_policy, seed=5)
     assert workload.output_tokens == sum(r.output_tokens for r in workload.requests)
+
+
+def test_the_policy_source_is_named_relative_to_the_repository(tmp_path):
+    """A report ends up in a committed screenshot, so the path in it matters.
+
+    An absolute path is correct and is also a photograph of the build machine's
+    home directory, which tells a reader nothing and dates the image the moment
+    the checkout moves.
+    """
+    from prefixcost.config import load_policy
+
+    assert load_policy(POLICY_PATH).source == "configs/policy.yaml"
+    assert load_policy().source == "configs/policy.yaml"
+
+
+def test_a_policy_outside_the_repository_keeps_its_absolute_path(tmp_path, raw_policy):
+    outside = tmp_path / "elsewhere.yaml"
+    outside.write_text(yaml.safe_dump(raw_policy), encoding="utf-8")
+    from prefixcost.config import load_policy
+
+    assert load_policy(outside).source == str(outside.resolve())

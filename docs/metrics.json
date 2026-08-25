@@ -1,0 +1,605 @@
+{
+  "anchors": {
+    "anchor_permutation_trials": [
+      "under {} permutations"
+    ],
+    "arrival_correlation_marginal": [
+      "rank correlation of {} with"
+    ],
+    "arrival_correlation_shapley": [
+      "against {} for the fair"
+    ],
+    "bench_error_at_ten": [
+      "off by {} at ten"
+    ],
+    "bench_error_at_that_sample": [
+      "still wrong by {}"
+    ],
+    "bench_exact_large_ms": [
+      "{} ms at the largest"
+    ],
+    "bench_exact_small_ms": [
+      "exact pass takes {} ms"
+    ],
+    "bench_largest_requests": [
+      "out to {} requests"
+    ],
+    "bench_linearity": [
+      "a linearity ratio of {}"
+    ],
+    "bench_python": [
+      "Python {}"
+    ],
+    "bench_repeats": [
+      "{} timed repeats"
+    ],
+    "bench_sampled_large_ms": [
+      "sampled pass takes {} ms"
+    ],
+    "bench_sampled_ratio": [
+      "{} times the exact pass"
+    ],
+    "bench_samples": [
+      "at {} permutations"
+    ],
+    "bench_smallest_requests": [
+      "from {} requests"
+    ],
+    "bench_smallest_sample_ok": [
+      "takes {} permutations"
+    ],
+    "capacity_share_of_working_set": [
+      "{} of the working set"
+    ],
+    "cell_acc_1000_max": [
+      "| {} |"
+    ],
+    "cell_acc_1000_median": [
+      "| {} |"
+    ],
+    "cell_acc_10_max": [
+      "| {} |"
+    ],
+    "cell_acc_10_median": [
+      "| {} |"
+    ],
+    "cell_acc_200_max": [
+      "| {} |"
+    ],
+    "cell_acc_200_median": [
+      "| {} |"
+    ],
+    "cell_acc_50_max": [
+      "| {} |"
+    ],
+    "cell_acc_50_median": [
+      "| {} |"
+    ],
+    "cell_bench_120_exact": [
+      "| {} |"
+    ],
+    "cell_bench_120_exact_p95": [
+      "| {} |"
+    ],
+    "cell_bench_120_nodes": [
+      "| {} |"
+    ],
+    "cell_bench_120_ratio": [
+      "| {} |"
+    ],
+    "cell_bench_120_sampled": [
+      "| {} |"
+    ],
+    "cell_bench_240_exact": [
+      "| {} |"
+    ],
+    "cell_bench_240_exact_p95": [
+      "| {} |"
+    ],
+    "cell_bench_240_nodes": [
+      "| {} |"
+    ],
+    "cell_bench_240_ratio": [
+      "| {} |"
+    ],
+    "cell_bench_240_sampled": [
+      "| {} |"
+    ],
+    "cell_bench_480_exact": [
+      "| {} |"
+    ],
+    "cell_bench_480_exact_p95": [
+      "| {} |"
+    ],
+    "cell_bench_480_nodes": [
+      "| {} |"
+    ],
+    "cell_bench_480_ratio": [
+      "| {} |"
+    ],
+    "cell_bench_480_sampled": [
+      "| {} |"
+    ],
+    "cell_bench_960_exact": [
+      "| {} |"
+    ],
+    "cell_bench_960_exact_p95": [
+      "| {} |"
+    ],
+    "cell_bench_960_nodes": [
+      "| {} |"
+    ],
+    "cell_bench_960_ratio": [
+      "| {} |"
+    ],
+    "cell_bench_960_sampled": [
+      "| {} |"
+    ],
+    "cell_cap_0_evictions": [
+      "| {} |"
+    ],
+    "cell_cap_0_lru": [
+      "| {} |"
+    ],
+    "cell_cap_0_oracle": [
+      "| {} |"
+    ],
+    "cell_cap_0_policy": [
+      "| {} |"
+    ],
+    "cell_cap_1000_evictions": [
+      "| {} |"
+    ],
+    "cell_cap_1000_lru": [
+      "| {} |"
+    ],
+    "cell_cap_1000_oracle": [
+      "| {} |"
+    ],
+    "cell_cap_1000_policy": [
+      "| {} |"
+    ],
+    "cell_cap_12000_evictions": [
+      "| {} |"
+    ],
+    "cell_cap_12000_lru": [
+      "| {} |"
+    ],
+    "cell_cap_12000_oracle": [
+      "| {} |"
+    ],
+    "cell_cap_12000_policy": [
+      "| {} |"
+    ],
+    "cell_cap_16000_evictions": [
+      "| {} |"
+    ],
+    "cell_cap_16000_lru": [
+      "| {} |"
+    ],
+    "cell_cap_16000_oracle": [
+      "| {} |"
+    ],
+    "cell_cap_16000_policy": [
+      "| {} |"
+    ],
+    "cell_cap_20000_evictions": [
+      "| {} |"
+    ],
+    "cell_cap_20000_lru": [
+      "| {} |"
+    ],
+    "cell_cap_20000_oracle": [
+      "| {} |"
+    ],
+    "cell_cap_20000_policy": [
+      "| {} |"
+    ],
+    "cell_cap_2000_evictions": [
+      "| {} |"
+    ],
+    "cell_cap_2000_lru": [
+      "| {} |"
+    ],
+    "cell_cap_2000_oracle": [
+      "| {} |"
+    ],
+    "cell_cap_2000_policy": [
+      "| {} |"
+    ],
+    "cell_cap_24613_evictions": [
+      "| {} |"
+    ],
+    "cell_cap_24613_lru": [
+      "| {} |"
+    ],
+    "cell_cap_24613_oracle": [
+      "| {} |"
+    ],
+    "cell_cap_24613_policy": [
+      "| {} |"
+    ],
+    "cell_cap_32000_evictions": [
+      "| {} |"
+    ],
+    "cell_cap_32000_lru": [
+      "| {} |"
+    ],
+    "cell_cap_32000_oracle": [
+      "| {} |"
+    ],
+    "cell_cap_32000_policy": [
+      "| {} |"
+    ],
+    "cell_cap_4000_evictions": [
+      "| {} |"
+    ],
+    "cell_cap_4000_lru": [
+      "| {} |"
+    ],
+    "cell_cap_4000_oracle": [
+      "| {} |"
+    ],
+    "cell_cap_4000_policy": [
+      "| {} |"
+    ],
+    "cell_cap_8000_evictions": [
+      "| {} |"
+    ],
+    "cell_cap_8000_lru": [
+      "| {} |"
+    ],
+    "cell_cap_8000_oracle": [
+      "| {} |"
+    ],
+    "cell_cap_8000_policy": [
+      "| {} |"
+    ],
+    "cell_collects_equal_split": [
+      "| {} |"
+    ],
+    "cell_collects_marginal": [
+      "| {} |"
+    ],
+    "cell_collects_per_request": [
+      "| {} |"
+    ],
+    "cell_collects_proportional": [
+      "| {} |"
+    ],
+    "cell_collects_shapley": [
+      "| {} |"
+    ],
+    "cell_fair_equal_split": [
+      "| {} |"
+    ],
+    "cell_fair_marginal": [
+      "| {} |"
+    ],
+    "cell_fair_per_request": [
+      "| {} |"
+    ],
+    "cell_fair_proportional": [
+      "| {} |"
+    ],
+    "cell_fair_shapley": [
+      "| {} |"
+    ],
+    "cell_first_equal_split": [
+      "| {} |"
+    ],
+    "cell_first_marginal": [
+      "| {} |"
+    ],
+    "cell_first_per_request": [
+      "| {} |"
+    ],
+    "cell_first_proportional": [
+      "| {} |"
+    ],
+    "cell_first_shapley": [
+      "| {} |"
+    ],
+    "cell_spread_equal_split": [
+      "| {} |"
+    ],
+    "cell_spread_marginal": [
+      "| {} |"
+    ],
+    "cell_spread_per_request": [
+      "| {} |"
+    ],
+    "cell_spread_proportional": [
+      "| {} |"
+    ],
+    "cell_spread_shapley": [
+      "| {} |"
+    ],
+    "coverage_line_pct": [
+      "{} percent line coverage",
+      "{}% line coverage"
+    ],
+    "distinct_prefix_tokens": [
+      "{} distinct prefix tokens"
+    ],
+    "evictions_at_first_bill": [
+      "still evicting {} nodes"
+    ],
+    "fair_collects": [
+      "fair split collects {}"
+    ],
+    "fair_shortfall": [
+      "short of the bill by {}"
+    ],
+    "family_replays": [
+      "of {} family replays"
+    ],
+    "first_arriver_chance": [
+      "chance would be {}"
+    ],
+    "first_arriver_marginal": [
+      "first arriver top in {} of"
+    ],
+    "first_arriver_shapley": [
+      "fair split does it {}"
+    ],
+    "first_bill_capacity": [
+      "a bill again from {}"
+    ],
+    "grid_all_three": [
+      "all three in {} of"
+    ],
+    "grid_all_three_when_recomputing": [
+      "has all three in {} of the"
+    ],
+    "grid_cells": [
+      "{} configurations"
+    ],
+    "grid_recomputing": [
+      "{} of them recompute"
+    ],
+    "lru_excess_at_shipped": [
+      "spending {} more than"
+    ],
+    "marginal_high": [
+      "and {} in another"
+    ],
+    "marginal_low": [
+      "charged {} in one arrival order"
+    ],
+    "marginal_median_spread": [
+      "moves by {} of its own"
+    ],
+    "marginal_worst_spread": [
+      "worst tenant moves {}"
+    ],
+    "oracle_prefill": [
+      "an oracle needs only {}"
+    ],
+    "orderings_per_workload": [
+      "{} arrival orders"
+    ],
+    "per_request_collects": [
+      "collects {} times"
+    ],
+    "per_request_surplus": [
+      "{} more than the server"
+    ],
+    "per_request_vs_fair_prefill": [
+      "{} times the fair share"
+    ],
+    "policy_cost_worst": [
+      "as much as {} more"
+    ],
+    "prompt_families": [
+      "{} prompt families"
+    ],
+    "prompt_tokens": [
+      "{} prompt tokens"
+    ],
+    "requests": [
+      "{} requests"
+    ],
+    "reuse_share": [
+      "reuses {} of"
+    ],
+    "shared_node_share": [
+      "shared between tenants, which is {}"
+    ],
+    "shared_nodes": [
+      "{} of those prefix tokens"
+    ],
+    "shipped_capacity": [
+      "capacity of {} tokens"
+    ],
+    "shipped_evictions": [
+      "{} evictions"
+    ],
+    "shipped_hit_share": [
+      "hit share of {}"
+    ],
+    "shipped_prefill": [
+      "actually processes {}"
+    ],
+    "stable_tenants": [
+      "{} of them exactly"
+    ],
+    "tenant_observations": [
+      "{} tenant observations"
+    ],
+    "tenants": [
+      "{} tenants"
+    ],
+    "tests_total": [
+      "{} tests"
+    ],
+    "vocabulary_size": [
+      "a vocabulary of {}"
+    ],
+    "worst_per_request_tenant_ratio": [
+      "worst line is {} times"
+    ],
+    "zero_eviction_capacity": [
+      "eviction stops at {}"
+    ]
+  },
+  "checked_documents": [
+    "README.md",
+    "docs/defense-guide.md",
+    "docs/adr/ADR-001-the-cache-is-the-trie-not-a-map-of-prompts.md",
+    "docs/adr/ADR-002-compute-the-shapley-value-rather-than-sample-it.md",
+    "docs/adr/ADR-003-train-the-vocabulary-here-rather-than-download-one.md",
+    "docs/adr/ADR-004-not-a-bill-outranks-order-dependent.md",
+    "docs/adr/ADR-005-evict-from-the-leaves-inwards.md"
+  ],
+  "metrics": {
+    "anchor_permutation_trials": 96,
+    "arrival_correlation_marginal": -0.2338,
+    "arrival_correlation_shapley": 0.0037,
+    "bench_error_at_ten": 0.1897,
+    "bench_error_at_that_sample": 0.0381,
+    "bench_exact_large_ms": 9.2,
+    "bench_exact_small_ms": 1.8,
+    "bench_largest_requests": 960,
+    "bench_linearity": 1.01,
+    "bench_python": "3.11.15",
+    "bench_repeats": 7,
+    "bench_sampled_large_ms": 2411.3,
+    "bench_sampled_ratio": 261.6,
+    "bench_samples": 200,
+    "bench_smallest_requests": 120,
+    "bench_smallest_sample_ok": 200,
+    "capacity_share_of_working_set": 0.33,
+    "cell_acc_1000_max": 0.0175,
+    "cell_acc_1000_median": 0.003,
+    "cell_acc_10_max": 0.1897,
+    "cell_acc_10_median": 0.0513,
+    "cell_acc_200_max": 0.0381,
+    "cell_acc_200_median": 0.0103,
+    "cell_acc_50_max": 0.0741,
+    "cell_acc_50_median": 0.0178,
+    "cell_bench_120_exact": 1.8,
+    "cell_bench_120_exact_p95": 2.0,
+    "cell_bench_120_nodes": 4964,
+    "cell_bench_120_ratio": 265.8,
+    "cell_bench_120_sampled": 488.9,
+    "cell_bench_240_exact": 2.7,
+    "cell_bench_240_exact_p95": 2.7,
+    "cell_bench_240_nodes": 7941,
+    "cell_bench_240_ratio": 288.0,
+    "cell_bench_240_sampled": 771.3,
+    "cell_bench_480_exact": 4.6,
+    "cell_bench_480_exact_p95": 4.9,
+    "cell_bench_480_nodes": 13640,
+    "cell_bench_480_ratio": 294.8,
+    "cell_bench_480_sampled": 1346.1,
+    "cell_bench_960_exact": 9.2,
+    "cell_bench_960_exact_p95": 12.8,
+    "cell_bench_960_nodes": 24613,
+    "cell_bench_960_ratio": 261.6,
+    "cell_bench_960_sampled": 2411.3,
+    "cell_cap_0_evictions": 0,
+    "cell_cap_0_lru": 337098,
+    "cell_cap_0_oracle": 337098,
+    "cell_cap_0_policy": 0.0,
+    "cell_cap_1000_evictions": 31077,
+    "cell_cap_1000_lru": 32077,
+    "cell_cap_1000_oracle": 29907,
+    "cell_cap_1000_policy": 0.0726,
+    "cell_cap_12000_evictions": 13137,
+    "cell_cap_12000_lru": 25137,
+    "cell_cap_12000_oracle": 24613,
+    "cell_cap_12000_policy": 0.0213,
+    "cell_cap_16000_evictions": 8683,
+    "cell_cap_16000_lru": 24683,
+    "cell_cap_16000_oracle": 24613,
+    "cell_cap_16000_policy": 0.0028,
+    "cell_cap_20000_evictions": 4613,
+    "cell_cap_20000_lru": 24613,
+    "cell_cap_20000_oracle": 24613,
+    "cell_cap_20000_policy": 0.0,
+    "cell_cap_2000_evictions": 30062,
+    "cell_cap_2000_lru": 32062,
+    "cell_cap_2000_oracle": 26491,
+    "cell_cap_2000_policy": 0.2103,
+    "cell_cap_24613_evictions": 0,
+    "cell_cap_24613_lru": 24613,
+    "cell_cap_24613_oracle": 24613,
+    "cell_cap_24613_policy": 0.0,
+    "cell_cap_32000_evictions": 0,
+    "cell_cap_32000_lru": 24613,
+    "cell_cap_32000_oracle": 24613,
+    "cell_cap_32000_policy": 0.0,
+    "cell_cap_4000_evictions": 27985,
+    "cell_cap_4000_lru": 31985,
+    "cell_cap_4000_oracle": 24613,
+    "cell_cap_4000_policy": 0.2995,
+    "cell_cap_8000_evictions": 17806,
+    "cell_cap_8000_lru": 25806,
+    "cell_cap_8000_oracle": 24613,
+    "cell_cap_8000_policy": 0.0485,
+    "cell_collects_equal_split": 0.9964,
+    "cell_collects_marginal": 1.0,
+    "cell_collects_per_request": 1.8378,
+    "cell_collects_proportional": 0.9964,
+    "cell_collects_shapley": 0.9964,
+    "cell_fair_equal_split": 1.0037,
+    "cell_fair_marginal": 0.9704,
+    "cell_fair_per_request": 13.7723,
+    "cell_fair_proportional": 1.0029,
+    "cell_fair_shapley": 1.0,
+    "cell_first_equal_split": 0.2222,
+    "cell_first_marginal": 1.0,
+    "cell_first_per_request": 0.2528,
+    "cell_first_proportional": 0.2222,
+    "cell_first_shapley": 0.2167,
+    "cell_spread_equal_split": 0.0,
+    "cell_spread_marginal": 0.3494,
+    "cell_spread_per_request": 0.0,
+    "cell_spread_proportional": 0.0,
+    "cell_spread_shapley": 0.0,
+    "coverage_line_pct": 99.9,
+    "distinct_prefix_tokens": 24613,
+    "evictions_at_first_bill": 4613,
+    "fair_collects": 0.9964,
+    "fair_shortfall": 0.0036,
+    "family_replays": 360,
+    "first_arriver_chance": 0.25,
+    "first_arriver_marginal": 360,
+    "first_arriver_shapley": 0.2167,
+    "first_bill_capacity": 20000,
+    "grid_all_three": 11,
+    "grid_all_three_when_recomputing": 0,
+    "grid_cells": 24,
+    "grid_recomputing": 13,
+    "lru_excess_at_shipped": 0.0532,
+    "marginal_high": 1336,
+    "marginal_low": 813,
+    "marginal_median_spread": 0.3494,
+    "marginal_worst_spread": 0.4975,
+    "oracle_prefill": 24613,
+    "orderings_per_workload": 12,
+    "per_request_collects": 1.8378,
+    "per_request_surplus": 0.8379,
+    "per_request_vs_fair_prefill": 13.7723,
+    "policy_cost_worst": 0.2995,
+    "prompt_families": 6,
+    "prompt_tokens": 337098,
+    "requests": 960,
+    "reuse_share": 0.9278,
+    "shared_node_share": 0.126,
+    "shared_nodes": 3103,
+    "shipped_capacity": 8000,
+    "shipped_evictions": 17806,
+    "shipped_hit_share": 0.9234,
+    "shipped_prefill": 25806,
+    "stable_tenants": 120,
+    "tenant_observations": 120,
+    "tenants": 24,
+    "tests_total": 84,
+    "vocabulary_size": 311,
+    "worst_per_request_tenant_ratio": 15.1728,
+    "zero_eviction_capacity": 24613
+  },
+  "note": "every value here is produced by running the suite and the five experiments"
+}

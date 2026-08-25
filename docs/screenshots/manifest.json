@@ -1,0 +1,96 @@
+{
+  "shots": [
+    {
+      "image": "docs/screenshots/audit-order-dependent.png",
+      "report": ".cache/reports/marginal.html",
+      "framed_by": [
+        null,
+        "What each scheme says, and whether it divides that total"
+      ],
+      "clip": {
+        "width": 949,
+        "height": 503.75
+      },
+      "caption": "The cache aware bill, audited: exit 1, because a tenant's share moves with arrival order",
+      "device_scale_factor": 2,
+      "badge": {
+        "colour": "rgb(92, 17, 17)",
+        "background": "rgb(251, 220, 220)",
+        "border": "rgb(92, 17, 17)",
+        "visible": true,
+        "text": "order-dependent",
+        "contrast_ratio": 10.61
+      },
+      "bytes": 126550
+    },
+    {
+      "image": "docs/screenshots/audit-five-schemes.png",
+      "report": ".cache/reports/marginal.html",
+      "framed_by": [
+        "What each scheme says, and whether it divides that total",
+        "The shipped scheme against the fair split, per tenant"
+      ],
+      "clip": {
+        "width": 935,
+        "height": 359.390625
+      },
+      "caption": "Five divisions of one bill. The only column that sums to it is the one that moves with arrival order",
+      "device_scale_factor": 2,
+      "badge": {
+        "colour": "rgb(92, 17, 17)",
+        "background": "rgb(251, 220, 220)",
+        "border": "rgb(92, 17, 17)",
+        "visible": true,
+        "text": "order-dependent",
+        "contrast_ratio": 10.61
+      },
+      "bytes": 124523
+    },
+    {
+      "image": "docs/screenshots/audit-per-tenant.png",
+      "report": ".cache/reports/marginal.html",
+      "framed_by": [
+        "The shipped scheme against the fair split, per tenant",
+        null
+      ],
+      "clip": {
+        "width": 918,
+        "height": 608.859375
+      },
+      "caption": "The rows a customer would see, against what they would owe on a fair split",
+      "device_scale_factor": 2,
+      "badge": {
+        "colour": "rgb(92, 17, 17)",
+        "background": "rgb(251, 220, 220)",
+        "border": "rgb(92, 17, 17)",
+        "visible": true,
+        "text": "order-dependent",
+        "contrast_ratio": 10.61
+      },
+      "bytes": 125547
+    },
+    {
+      "image": "docs/screenshots/audit-not-an-attribution.png",
+      "report": ".cache/reports/per_request.html",
+      "framed_by": [
+        null,
+        "What each scheme says, and whether it divides that total"
+      ],
+      "clip": {
+        "width": 866,
+        "height": 480.5
+      },
+      "caption": "The bill almost everybody sends, audited: exit 2, because it is not a division of anything the server spent",
+      "device_scale_factor": 2,
+      "badge": {
+        "colour": "rgb(74, 55, 8)",
+        "background": "rgb(253, 240, 211)",
+        "border": "rgb(74, 55, 8)",
+        "visible": true,
+        "text": "not-an-attribution",
+        "contrast_ratio": 10.09
+      },
+      "bytes": 117798
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "file": "docs/diagrams/architecture.svg",
+  "width": 1000,
+  "height": 940,
+  "generated_by": "tools/render_diagram.py",
+  "labels": "plain text elements only, no foreignObject",
+  "background": "one opaque rectangle covering the whole viewBox",
+  "boxes": 10,
+  "bytes": 19089
+}
