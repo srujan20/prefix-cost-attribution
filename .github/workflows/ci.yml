@@ -26,9 +26,9 @@ jobs:
       - run: ruff format --check src tests tools experiments benchmark
 
   # Installs without any extra beyond dev, which is the job that catches an
-  # optional dependency imported at module scope. pyspark is a supported engine
-  # behind an extra and is deliberately absent here: a machine with it installed
-  # is exactly the machine that cannot catch that bug.
+  # optional dependency imported at module scope. tiktoken, Playwright and
+  # matplotlib are all deliberately absent here: a machine with them installed is
+  # exactly the machine that cannot catch that bug.
   test:
     runs-on: ubuntu-latest
     strategy:
@@ -49,21 +49,18 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - run: pip install -e ".[dev]"
-      - name: Tests, without the second engine
+      - name: Tests
         run: |
-          python -m pytest -q -m "not spark" --junitxml=reports/junit-lean.xml \
-            --cov=windowparity --cov-report=json:reports/coverage-lean.json \
+          python -m pytest -q --junitxml=reports/junit.xml \
+            --cov=prefixcost --cov-report=json:reports/coverage.json \
             --cov-report=xml:reports/coverage.xml
-      - name: Coverage floor for the lean install
+      - name: Coverage floor
         run: |
           python - <<'PY'
           import json, sys
-          # Lower than the published figure on purpose. This run cannot reach the
-          # Spark engine, so holding it to the full number would mean either
-          # deleting a tested module or lying about what ran here.
-          floor = 88.0
-          covered = json.load(open("reports/coverage-lean.json"))["totals"]["percent_covered"]
-          print(f"lean line coverage {covered:.2f}, floor {floor}")
+          floor = 99.0
+          covered = json.load(open("reports/coverage.json"))["totals"]["percent_covered"]
+          print(f"line coverage {covered:.2f}, floor {floor}")
           sys.exit(0 if covered >= floor else 1)
           PY
       - uses: actions/upload-artifact@v4
@@ -72,48 +69,39 @@ jobs:
           name: test-reports-${{ matrix.python-version }}
           path: reports/
 
-  # The second engine, run for real. Ubuntu runners ship a JVM, so there is no
-  # reason for the cross engine claim in ADR-005 to rest on my machine.
-  spark:
+  # The tool run as a consumer would run it, through its own composite action,
+  # which is the only job that would notice `action.yml` drifting from the CLI it
+  # wraps. Both non zero verdicts are exercised on purpose: a step that only ever
+  # sees exit 0 is not testing an exit code.
+  action:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: ./
+        id: fair
         with:
-          fetch-depth: 0
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: "17"
-      # pyspark publishes an sdist and no wheel, so pip builds it here. An old
-      # setuptools fails that build with an AttributeError about install_layout,
-      # which reads as a pyspark problem and is a build backend problem, so the
-      # backend is upgraded first rather than left to whatever the image shipped.
-      - run: |
-          pip install --upgrade pip setuptools wheel
-          pip install -e ".[dev,spark]"
-      - name: The cross engine tests
-        run: python -m pytest -q -m spark
-      - name: The full suite, which is where the published coverage comes from
+          scheme: shapley
+          orderings: "4"
+          not-an-attribution-fails: "false"
+      - name: The fair split at the shipped capacity is not a bill
         run: |
-          python -m pytest -q --junitxml=reports/junit-full.xml \
-            --cov=windowparity --cov-report=json:reports/coverage-full.json
-      - name: Coverage floor for the full suite
+          echo "verdict ${{ steps.fair.outputs.verdict }}, exit ${{ steps.fair.outputs.exit-code }}"
+          test "${{ steps.fair.outputs.verdict }}" = "not-an-attribution"
+      - uses: ./
+        id: marginal
+        with:
+          scheme: marginal
+          orderings: "4"
+          order-dependent-fails: "false"
+      - name: The efficient split is a bill, and moves with arrival order
         run: |
-          python - <<'PY'
-          import json, sys
-          floor = 99.0
-          covered = json.load(open("reports/coverage-full.json"))["totals"]["percent_covered"]
-          print(f"full line coverage {covered:.2f}, floor {floor}")
-          sys.exit(0 if covered >= floor else 1)
-          PY
+          echo "verdict ${{ steps.marginal.outputs.verdict }}"
+          test "${{ steps.marginal.outputs.verdict }}" = "order-dependent"
 
-  # The only job that re-measures a published rate, with pinned dependency
-  # versions. It needs the spark extra because one of the five experiments is the
-  # cross engine one, and that experiment refuses to run on a single engine
-  # rather than publishing a disagreement rate of zero and calling it a finding.
+  # The only job that re-measures a published figure, with pinned dependency
+  # versions. The test suite asserts identities and properties so it runs against
+  # whatever resolves on three Pythons; a published rate is worth nothing if it
+  # moves with a minor bump, so it is measured once, here, against exact pins.
   receipts:
     runs-on: ubuntu-latest
     steps:
@@ -123,20 +111,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: "17"
       - run: |
-          pip install --upgrade pip setuptools wheel
           pip install -r requirements-receipts.txt
-          pip install -e ".[dev,spark]"
-      - name: Both suites, so the collector can read the reports
+          pip install -e ".[dev]"
+      - name: The suite, so the collector can read its reports
         run: |
-          python -m pytest -q -m "not spark" --junitxml=reports/junit-lean.xml \
-            --cov=windowparity --cov-report=json:reports/coverage-lean.json
-          python -m pytest -q --junitxml=reports/junit-full.xml \
-            --cov=windowparity --cov-report=json:reports/coverage-full.json
+          python -m pytest -q --junitxml=reports/junit.xml \
+            --cov=prefixcost --cov-report=json:reports/coverage.json
       - name: Re-run every experiment from scratch
         run: |
           rm -rf docs/experiments
@@ -152,20 +133,23 @@ jobs:
           import json
           metrics = json.load(open("docs/metrics.json"))["metrics"]
           rows = [
-              ("what the parity check everybody ships detects", metrics["backfill_detection"]),
-              ("what the replay check detects", metrics["replay_detection"]),
-              ("requests where serving read a different value", metrics["median_skew_share"]),
-              ("requests whose decision changed", metrics["median_decision_flips"]),
-              ("logs returning not-checkable without an ingest time",
-               metrics["not_checkable_share"]),
-              ("logs passing without an ingest time", metrics["passes_without_ingest_time"]),
-              ("cross engine disagreement, order independent aggregates",
-               metrics["engine_exact_order_independent"]),
-              ("cross engine disagreement, order dependent aggregates",
-               metrics["engine_exact_order_dependent"]),
-              ("exact equality firing on frames one ulp apart", metrics["ulp_exact_alarm"]),
-              ("what the point in time replay costs, relative to the offline pass",
-               metrics["bench_replay_ratio"]),
+              ("what a per request bill collects, against the spend",
+               metrics["per_request_collects"]),
+              ("the same bill against a fair share of prefill",
+               metrics["per_request_vs_fair_prefill"]),
+              ("worst single tenant on that bill", metrics["worst_per_request_tenant_ratio"]),
+              ("median tenant spread under the only efficient scheme",
+               metrics["marginal_median_spread"]),
+              ("worst tenant, across arrival orders of the same requests",
+               metrics["marginal_worst_spread"]),
+              ("family replays where the first arriver paid the most",
+               metrics["first_arriver_marginal"]),
+              ("what chance alone would give", metrics["first_arriver_chance"]),
+              ("what the fair split collects, against the spend", metrics["fair_collects"]),
+              ("grid cells where some scheme had all three properties",
+               metrics["grid_all_three"]),
+              ("of those, cells where the cache recomputed",
+               metrics["grid_all_three_when_recomputing"]),
           ]
           print("### The numbers this build would rather not publish\n")
           print("| quantity | value |")

@@ -1,54 +1,65 @@
-name: "window parity audit"
-description: "Audit training and serving parity for windowed features, and return not-checkable rather than a pass when the log carries no ingest time"
+name: "prefix cost attribution audit"
+description: "Audit how a multi tenant LLM bill divides prefill cost under a prefix cache, and return not-an-attribution rather than a pass when the scheme does not sum to what the server spent"
 author: "Srujan Sadineni"
 branding:
-  icon: "clock"
+  icon: "divide"
   color: "red"
 
 # Three exit codes reach the caller, and which one becomes a failed step is the
 # whole reason this file exists rather than a bare `run:` line.
 #
-# Exit 1 is a detected skew and fails. Exit 2 means the checks that would have
-# found a lateness skew could not run, because the log carries no ingest time,
-# and `not-checkable-fails` decides it. It defaults to false, because a team that
-# has just adopted this needs to see that verdict for a fortnight before it
-# starts blocking merges, and because the fix is a pipeline change rather than
-# something anybody can do in the pull request that first went amber. Exit 3 and
-# 4 are always failures, because they mean the audit did not run.
+# Exit 2 means the scheme is not a division of what the server spent, which for
+# most teams is the state they are already in on the day they adopt this, and it
+# cannot be fixed inside the pull request that first went amber. So
+# `not-an-attribution-fails` defaults to false and the step annotates instead.
+#
+# Exit 1 means the scheme sums to the spend and a tenant's share moves with
+# arrival order. `order-dependent-fails` defaults to true, because that verdict
+# is a live billing defect rather than a state of the world.
+#
+# Exit 3 and 4 are always failures, because they mean the audit did not run.
 
 inputs:
   policy:
-    description: "Path to the policy file with the windows, aggregates and tolerances"
+    description: "Path to the policy file with the workload, capacity, prices and materiality"
     required: false
     default: "configs/policy.yaml"
-  seed:
-    description: "Seed for the generated log"
-    required: false
-    default: "11"
-  late-share:
-    description: "Override the policy's lateness. 0 is the exact anchor: nothing late"
+  scheme:
+    description: "Which attribution scheme to audit: per_request, marginal, equal_split, proportional or shapley"
     required: false
     default: ""
-  no-ingest-time:
-    description: "Audit as a feature store that records only an event time"
+  seed:
+    description: "Seed for the generated workload"
     required: false
-    default: "false"
+    default: "11"
+  orderings:
+    description: "How many arrival orders to measure stability over"
+    required: false
+    default: "12"
   html:
     description: "Optional path for the self contained HTML report"
+    required: false
+    default: ""
+  json:
+    description: "Optional path for the machine readable summary"
     required: false
     default: ""
   warn-only:
     description: "Report the verdict and never fail the step"
     required: false
     default: "false"
-  not-checkable-fails:
-    description: "Whether exit 2, the strongest checks could not run, fails the step"
+  not-an-attribution-fails:
+    description: "Whether exit 2, the scheme does not sum to the spend, fails the step"
     required: false
     default: "false"
+  order-dependent-fails:
+    description: "Whether exit 1, a tenant's share moves with arrival order, fails the step"
+    required: false
+    default: "true"
 
 outputs:
   verdict:
-    description: "parity-holds, skew-detected, or not-checkable"
+    description: "attribution-sound, order-dependent, or not-an-attribution"
     value: ${{ steps.audit.outputs.verdict }}
   exit-code:
     description: "The audit's own exit code, whatever this action did about it"
@@ -59,9 +70,10 @@ runs:
   steps:
     - name: Install the audit
       shell: bash
-      # The lean install on purpose. This action never needs the second engine,
-      # and a composite action that dragged a JVM into somebody else's workflow
-      # would be a good way to never be adopted.
+      # The lean install on purpose. This action needs neither the evidence
+      # tooling nor a pretrained vocabulary, and a composite action that pulled a
+      # browser into somebody else's workflow would be a good way to never be
+      # adopted.
       run: python -m pip install --quiet "${{ github.action_path }}"
 
     - name: Run the audit
@@ -70,18 +82,19 @@ runs:
       run: |
         set +e
         flags=""
-        if [ -n "${{ inputs.late-share }}" ]; then
-          flags="$flags --late-share ${{ inputs.late-share }}"
+        if [ -n "${{ inputs.scheme }}" ]; then
+          flags="$flags --scheme ${{ inputs.scheme }}"
         fi
         if [ -n "${{ inputs.html }}" ]; then
           flags="$flags --html ${{ inputs.html }}"
         fi
-        if [ "${{ inputs.no-ingest-time }}" = "true" ]; then
-          flags="$flags --no-ingest-time"
+        if [ -n "${{ inputs.json }}" ]; then
+          flags="$flags --json ${{ inputs.json }}"
         fi
-        output=$(python -m windowparity audit \
+        output=$(python -m prefixcost audit \
           --policy "${{ inputs.policy }}" \
           --seed "${{ inputs.seed }}" \
+          --orderings "${{ inputs.orderings }}" \
           $flags 2>&1)
         code=$?
         set -e
@@ -91,7 +104,7 @@ runs:
         echo "exit-code=${code}" >> "$GITHUB_OUTPUT"
 
         {
-          echo "### Window parity audit"
+          echo "### Prefix cost attribution audit"
           echo
           echo "Verdict: \`${verdict}\`, exit code ${code}."
           echo
@@ -104,8 +117,12 @@ runs:
           echo "warn-only is set, so this step passes whatever the audit said"
           exit 0
         fi
-        if [ "$code" = "2" ] && [ "${{ inputs.not-checkable-fails }}" != "true" ]; then
-          echo "::warning::the checks that find a lateness skew could not run, because this log carries no ingest time. That is not a pass"
+        if [ "$code" = "2" ] && [ "${{ inputs.not-an-attribution-fails }}" != "true" ]; then
+          echo "::warning::this scheme does not sum to what the server spent, so whatever it divides, it is not the bill. That is not a pass"
+          exit 0
+        fi
+        if [ "$code" = "1" ] && [ "${{ inputs.order-dependent-fails }}" != "true" ]; then
+          echo "::warning::a tenant's share moves between arrival orders of the same requests by more than the configured materiality"
           exit 0
         fi
         exit $code

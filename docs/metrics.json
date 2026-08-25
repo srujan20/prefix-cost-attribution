@@ -87,6 +87,9 @@
     "cell_bench_120_ratio": [
       "| {} |"
     ],
+    "cell_bench_120_requests": [
+      "| {} |"
+    ],
     "cell_bench_120_sampled": [
       "| {} |"
     ],
@@ -100,6 +103,9 @@
       "| {} |"
     ],
     "cell_bench_240_ratio": [
+      "| {} |"
+    ],
+    "cell_bench_240_requests": [
       "| {} |"
     ],
     "cell_bench_240_sampled": [
@@ -117,6 +123,9 @@
     "cell_bench_480_ratio": [
       "| {} |"
     ],
+    "cell_bench_480_requests": [
+      "| {} |"
+    ],
     "cell_bench_480_sampled": [
       "| {} |"
     ],
@@ -130,6 +139,9 @@
       "| {} |"
     ],
     "cell_bench_960_ratio": [
+      "| {} |"
+    ],
+    "cell_bench_960_requests": [
       "| {} |"
     ],
     "cell_bench_960_sampled": [
@@ -319,6 +331,9 @@
       "{} percent line coverage",
       "{}% line coverage"
     ],
+    "demo_seconds_about": [
+      "about {} seconds"
+    ],
     "distinct_prefix_tokens": [
       "{} distinct prefix tokens"
     ],
@@ -482,21 +497,25 @@
     "cell_bench_120_exact_p95": 2.0,
     "cell_bench_120_nodes": 4964,
     "cell_bench_120_ratio": 265.8,
+    "cell_bench_120_requests": 120,
     "cell_bench_120_sampled": 488.9,
     "cell_bench_240_exact": 2.7,
     "cell_bench_240_exact_p95": 2.7,
     "cell_bench_240_nodes": 7941,
     "cell_bench_240_ratio": 288.0,
+    "cell_bench_240_requests": 240,
     "cell_bench_240_sampled": 771.3,
     "cell_bench_480_exact": 4.6,
     "cell_bench_480_exact_p95": 4.9,
     "cell_bench_480_nodes": 13640,
     "cell_bench_480_ratio": 294.8,
+    "cell_bench_480_requests": 480,
     "cell_bench_480_sampled": 1346.1,
     "cell_bench_960_exact": 9.2,
     "cell_bench_960_exact_p95": 12.8,
     "cell_bench_960_nodes": 24613,
     "cell_bench_960_ratio": 261.6,
+    "cell_bench_960_requests": 960,
     "cell_bench_960_sampled": 2411.3,
     "cell_cap_0_evictions": 0,
     "cell_cap_0_lru": 337098,
@@ -559,6 +578,7 @@
     "cell_spread_proportional": 0.0,
     "cell_spread_shapley": 0.0,
     "coverage_line_pct": 99.9,
+    "demo_seconds_about": 25,
     "distinct_prefix_tokens": 24613,
     "evictions_at_first_bill": 4613,
     "fair_collects": 0.9964,
@@ -596,7 +616,7 @@
     "stable_tenants": 120,
     "tenant_observations": 120,
     "tenants": 24,
-    "tests_total": 84,
+    "tests_total": 105,
     "vocabulary_size": 311,
     "worst_per_request_tenant_ratio": 15.1728,
     "zero_eviction_capacity": 24613

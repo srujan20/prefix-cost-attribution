@@ -28,6 +28,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import subprocess
 import sys
 from pathlib import Path
@@ -111,6 +112,7 @@ ANCHORS: dict[str, list[str]] = {
     "bench_smallest_sample_ok": ["takes {} permutations"],
     "bench_error_at_that_sample": ["still wrong by {}"],
     "bench_error_at_ten": ["off by {} at ten"],
+    "demo_seconds_about": ["about {} seconds"],
 }
 
 CELL_ANCHOR = ["| {} |"]
@@ -167,6 +169,30 @@ def load(name: str) -> dict:
     if not path.is_file():
         raise SystemExit(f"{path.relative_to(REPO)} is missing. Run: make experiments")
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def load_demo_seconds() -> int:
+    """How long the recorded demo runs, rounded up to the next five seconds.
+
+    In the README's own heading, so the number a reader is promised comes from
+    the manifest the recorder wrote rather than from a guess that stops being
+    true the first time a command gets slower.
+
+    Rounded up to five rather than to the second, and the coarseness is the
+    point. The exact figure moved from 25 to 24 between two recordings of the
+    same four commands, which is machine noise, and a document that has to be
+    edited every time a runner is half a second busier trains its author to stop
+    reading the check.
+    """
+    path = DOCS / "video" / "manifest.json"
+    if not path.is_file():
+        raise SystemExit(
+            f"{path.relative_to(REPO)} is missing, so the demo length cannot be "
+            "checked. Run: make evidence"
+        )
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    seconds = sum(item["seconds"] for item in payload["commands"])
+    return 5 * math.ceil(seconds / 5)
 
 
 def load_bench() -> dict:
@@ -285,6 +311,7 @@ def build_metrics(*, skip_tests: bool, skip_experiments: bool) -> dict[str, obje
     metrics["bench_smallest_sample_ok"] = smallest_ok
     metrics["bench_error_at_that_sample"] = four(at_that_sample["max_relative_error"])
     metrics["bench_error_at_ten"] = four(bench["accuracy"][0]["max_relative_error"])
+    metrics["demo_seconds_about"] = load_demo_seconds()
 
     # Table cells. Each is guarded by the weaker claim that the value appears as a
     # table cell, because an anchor that also pinned the row label would need the
@@ -305,6 +332,7 @@ def build_metrics(*, skip_tests: bool, skip_experiments: bool) -> dict[str, obje
         metrics[f"cell_cap_{key}_evictions"] = row["lru"]["evictions"]
     for row in bench["rows"]:
         key = row["requests"]
+        metrics[f"cell_bench_{key}_requests"] = row["requests"]
         metrics[f"cell_bench_{key}_nodes"] = row["distinct_prefix_tokens"]
         metrics[f"cell_bench_{key}_exact"] = ms(row["exact_p50_ms"])
         metrics[f"cell_bench_{key}_exact_p95"] = ms(row["exact_p95_ms"])

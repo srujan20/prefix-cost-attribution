@@ -90,3 +90,79 @@ def test_a_target_below_one_is_refused():
 
 def test_a_single_character_word_needs_no_merging(vocabulary):
     assert encode("a", vocabulary) == ("a",)
+
+
+def test_the_pretrained_path_refuses_clearly_when_the_extra_is_absent():
+    """The optional path in `vocabularies.py`, which is written and never run here.
+
+    What is checked is the refusal rather than the download, because a test that
+    needed the download would be a test of somebody's CDN. The refusal is the
+    part this repository is responsible for, and ADR-003 is the record of why the
+    default is the other way round.
+    """
+    from prefixcost.errors import VocabularyUnavailable
+    from prefixcost.vocabularies import KNOWN_ENCODINGS, load_pretrained, pretrained_available
+
+    if pretrained_available():
+        with pytest.raises(VocabularyUnavailable, match="unknown encoding"):
+            load_pretrained("not-a-real-encoding")
+    else:
+        with pytest.raises(VocabularyUnavailable, match="vocabularies extra"):
+            load_pretrained(KNOWN_ENCODINGS[0])
+
+
+class _StubEncoding:
+    """Enough of a tiktoken encoding to check the adapter, and nothing more.
+
+    The download is not tested and cannot be: a test that needed it would be a
+    test of somebody's CDN and would fail in the environment this repository
+    promises to run in. What is testable is the shape of the wrapper, which is
+    the part `vocabularies.py` is responsible for, so a stub stands in for the
+    library and the seam between them is exercised.
+    """
+
+    n_vocab = 100277
+
+    def encode(self, text: str) -> list[int]:
+        return [ord(character) for character in text]
+
+
+def test_the_pretrained_wrapper_presents_the_same_surface_as_the_trained_one(monkeypatch):
+    import sys
+    import types
+
+    from prefixcost.vocabularies import PretrainedEncoder, load_pretrained
+
+    encoder = PretrainedEncoder(name="cl100k_base", _encoding=_StubEncoding())
+    assert encoder.size == 100277
+    assert encoder.encode("ab") == (97, 98)
+    assert encoder.count("abc") == 3
+    assert encoder.as_dict() == {"size": 100277, "encoding": "cl100k_base", "trained_here": False}
+
+    stub = types.ModuleType("tiktoken")
+    stub.get_encoding = lambda _name: _StubEncoding()
+    monkeypatch.setitem(sys.modules, "tiktoken", stub)
+    loaded = load_pretrained("cl100k_base")
+    assert loaded.name == "cl100k_base"
+    assert loaded.count("hello") == 5
+
+
+def test_an_unknown_encoding_name_is_refused_before_anything_is_downloaded(monkeypatch):
+    import sys
+    import types
+
+    from prefixcost.errors import VocabularyUnavailable
+    from prefixcost.vocabularies import load_pretrained
+
+    called: list[str] = []
+    stub = types.ModuleType("tiktoken")
+
+    def get_encoding(name: str):  # pragma: no cover - the refusal happens first
+        called.append(name)
+        return _StubEncoding()
+
+    stub.get_encoding = get_encoding
+    monkeypatch.setitem(sys.modules, "tiktoken", stub)
+    with pytest.raises(VocabularyUnavailable, match="unknown encoding"):
+        load_pretrained("not-a-real-encoding")
+    assert called == []

@@ -35,6 +35,11 @@ def command_plan(args: argparse.Namespace) -> int:
         f"{policy.workload.requests} requests"
     )
     print(f"cache:    {policy.cache.capacity_tokens} tokens, {policy.cache.policy} eviction")
+    from .vocabularies import pretrained_available
+
+    trained = f"trained here, target {policy.vocabulary.target_size} tokens"
+    optional = "available" if pretrained_available() else "not installed"
+    print(f"tokens:   {trained}. Pretrained alternative: {optional}")
     print(
         f"pricing:  {policy.pricing.prefill_per_token} per prefill token, "
         f"{policy.pricing.decode_per_token} per decode token"

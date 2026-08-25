@@ -41,7 +41,10 @@ FENCE = re.compile(r"```.*?```", re.DOTALL)
 INLINE_CODE = re.compile(r"`[^`\n]*`")
 HTML_ATTRIBUTE = re.compile(r"""\w+="[^"]*\"""")
 LINK_TARGET = re.compile(r"\]\([^)]*\)")
-NUMBER = re.compile(r"(?<![\w.])\d+(?:[.,]\d+)*(?![\w])")
+# An optional leading minus is part of the number. Without it a rank correlation
+# published as -0.2338 was scanned as the token 0.2338, which matched no metric,
+# and the reverse check reported the repository's own measurement as unexplained.
+NUMBER = re.compile(r"(?<![\w.])-?\d+(?:[.,]\d+)*(?![\w])")
 WHITESPACE = re.compile(r"\s+")
 
 # Structural numbers that are part of the design rather than measurements, each
@@ -55,6 +58,9 @@ STRUCTURAL_NUMBERS = {
     "5": "the number of schemes, and the number of experiments",
     "6": "an ADR count",
     "10": "the smallest sample count in the accuracy sweep",
+    "28,504": "the prefill an earlier whole prompt cache reported, quoted in ADR-001",
+    "60000": "the cache capacity this repository shipped first, quoted as a rejected default",
+    "0.0013": "the correlation the first version of exp04 reported, quoted as a mistake",
     "50": "a sample count in the accuracy sweep",
     "1000": "the largest sample count in the accuracy sweep",
     "06": "the exponent of a scientific notation tolerance, 1e-06",
