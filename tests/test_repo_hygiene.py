@@ -278,6 +278,12 @@ needs_history = pytest.mark.skipif(
 # committed by GitHub, under the account's noreply address. That is not a second
 # author, and the first version of the author test called it one.
 GITHUB_COMMITTERS = ("noreply@github.com", "web-flow")
+# GitHub issues every account an alias of the form
+# <id>+<handle>@users.noreply.github.com, and authors a web editor commit as that
+# address whenever the account keeps its email private. Note the dot: it is
+# users.noreply.github.com, so it does not contain the "noreply@github.com" above,
+# which is exactly how it slipped past the first version of the author check.
+GITHUB_ALIAS = re.compile(r"(?:\d+\+)?(?P<handle>[a-z0-9][a-z0-9-]*)@users\.noreply\.github\.com")
 BOT_MARKERS = ("[bot]", "bot@", "dependabot", "renovate", "github-actions")
 
 
@@ -321,14 +327,36 @@ def test_no_commit_was_written_by_a_bot():
 
 @needs_history
 def test_the_history_has_one_human_author():
-    """One person authored every commit, ignoring who GitHub recorded as committer."""
+    """One person authored every commit, whichever address git recorded for them.
+
+    Two author addresses for one person is the ordinary state of a repository
+    edited both locally and in the browser. A local commit carries the address in
+    the git config; a commit made in the GitHub web editor carries the account's
+    <id>+<handle>@users.noreply.github.com alias instead, whenever that account
+    keeps its email private.
+
+    The first version compared whole identity strings and went red the first time
+    a one line README edit was made on github.com. That is a false positive, and a
+    false positive is worse here than no test at all: a suite that cries wolf on a
+    green repository teaches its reader to stop believing the red.
+
+    What is asserted now is what the check was always for. Exactly one address
+    that GitHub did not issue, which is the person's own, and at most one GitHub
+    account behind the aliases. A second contributor pushing from their own
+    machine still fails it, and so does a second GitHub account.
+    """
     authors = {line for line in _git("log", "--format=%an <%ae>").splitlines() if line}
-    non_github = {
-        author
-        for author in authors
-        if not any(allowed in author.lower() for allowed in GITHUB_COMMITTERS)
-    }
-    assert len(non_github) == 1, sorted(authors)
+    own: set[str] = set()
+    handles: set[str] = set()
+    for author in authors:
+        address = author.rsplit("<", 1)[-1].rstrip(">").strip().lower()
+        alias = GITHUB_ALIAS.fullmatch(address)
+        if alias is not None:
+            handles.add(alias.group("handle"))
+        elif not any(allowed in address for allowed in GITHUB_COMMITTERS):
+            own.add(address)
+    assert len(own) == 1, sorted(authors)
+    assert len(handles) <= 1, sorted(handles)
 
 
 @needs_history
