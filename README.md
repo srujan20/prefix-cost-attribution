@@ -229,7 +229,7 @@ If the scheme you name is not a division of what your server spent, this tool ex
 In another repository, as a step:
 
 ```yaml
-- uses: srujan20/prefix-cost-attribution@main
+- uses: srujan20/prefix-cost-attribution@v1.0.0
   with:
     policy: configs/policy.yaml
     scheme: marginal
