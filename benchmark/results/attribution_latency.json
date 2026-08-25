@@ -1,0 +1,92 @@
+{
+  "hardware": {
+    "python": "3.11.15",
+    "machine": "x86_64",
+    "platform": "Linux"
+  },
+  "repeats": 7,
+  "bench_samples": 200,
+  "materiality": 0.05,
+  "rows": [
+    {
+      "conversations_per_tenant": 1,
+      "requests": 120,
+      "prompt_tokens": 42129,
+      "distinct_prefix_tokens": 4964,
+      "exact_p50_ms": 1.84,
+      "exact_p95_ms": 1.956,
+      "sampled_p50_ms": 488.888,
+      "sampled_over_exact": 265.8
+    },
+    {
+      "conversations_per_tenant": 2,
+      "requests": 240,
+      "prompt_tokens": 84228,
+      "distinct_prefix_tokens": 7941,
+      "exact_p50_ms": 2.678,
+      "exact_p95_ms": 2.707,
+      "sampled_p50_ms": 771.262,
+      "sampled_over_exact": 288.0
+    },
+    {
+      "conversations_per_tenant": 4,
+      "requests": 480,
+      "prompt_tokens": 168435,
+      "distinct_prefix_tokens": 13640,
+      "exact_p50_ms": 4.565,
+      "exact_p95_ms": 4.923,
+      "sampled_p50_ms": 1346.119,
+      "sampled_over_exact": 294.8
+    },
+    {
+      "conversations_per_tenant": 8,
+      "requests": 960,
+      "prompt_tokens": 337098,
+      "distinct_prefix_tokens": 24613,
+      "exact_p50_ms": 9.216,
+      "exact_p95_ms": 12.801,
+      "sampled_p50_ms": 2411.266,
+      "sampled_over_exact": 261.6
+    }
+  ],
+  "accuracy": [
+    {
+      "permutations": 10,
+      "seeds": 5,
+      "max_relative_error": 0.18968,
+      "median_relative_error": 0.05134,
+      "under_materiality": false
+    },
+    {
+      "permutations": 50,
+      "seeds": 5,
+      "max_relative_error": 0.07406,
+      "median_relative_error": 0.01777,
+      "under_materiality": false
+    },
+    {
+      "permutations": 200,
+      "seeds": 5,
+      "max_relative_error": 0.03812,
+      "median_relative_error": 0.01031,
+      "under_materiality": true
+    },
+    {
+      "permutations": 1000,
+      "seeds": 5,
+      "max_relative_error": 0.01749,
+      "median_relative_error": 0.003,
+      "under_materiality": true
+    }
+  ],
+  "accuracy_seeds": [
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "smallest_sample_under_materiality": 200,
+  "error_falls_monotonically": true,
+  "linearity": 1.01
+}

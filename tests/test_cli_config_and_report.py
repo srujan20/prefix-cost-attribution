@@ -181,7 +181,13 @@ def test_the_audit_command_returns_one_for_an_order_dependent_scheme(capsys):
     assert code == 1
 
 
-def test_the_audit_command_returns_zero_for_the_fair_split(capsys):
+def test_the_fair_split_is_not_a_bill_at_the_shipped_capacity(capsys, tmp_path, raw_policy):
+    """The finding, as an exit code.
+
+    At the shipped capacity the cache recomputes prefixes it had already
+    computed, so the server spends more than the trie's node count and the fair
+    split, which divides the node count, no longer sums to the spend. Exit 2.
+    """
     code = main(
         [
             "audit",
@@ -194,6 +200,24 @@ def test_the_audit_command_returns_zero_for_the_fair_split(capsys):
             "--policy",
             str(POLICY_PATH),
         ]
+    )
+    capsys.readouterr()
+    assert code == 2
+
+
+def test_the_fair_split_is_a_bill_once_the_cache_stops_recomputing(capsys, tmp_path, raw_policy):
+    """And the other side of the boundary, which is what makes it a boundary.
+
+    Raise the capacity above the workload's distinct prefix token count and the
+    same scheme on the same workload becomes efficient, order independent and
+    fair at once. Nothing about the scheme changed.
+    """
+    generous = copy.deepcopy(raw_policy)
+    generous["cache"]["capacity_tokens"] = 400_000
+    path = tmp_path / "generous.yaml"
+    path.write_text(yaml.safe_dump(generous), encoding="utf-8")
+    code = main(
+        ["audit", "--seed", "5", "--scheme", "shapley", "--orderings", "4", "--policy", str(path)]
     )
     capsys.readouterr()
     assert code == 0
